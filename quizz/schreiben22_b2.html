@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<!-- Mirrored from pruefung-b2.netlify.app/schreiben2_b2 by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 31 Jan 2026 16:05:07 GMT -->
+<!-- Added by HTTrack -->
+<!-- Mirrored from b2-telc.netlify.app/prufung-test/schreiben2_b2 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Feb 2026 03:28:26 GMT -->
+<!-- Added by HTTrack -->
+<!-- Mirrored from deuropa.app/quizz/schreiben22_b2 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:04:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <title>B2 Prüfung - Ihr Kosmetik-Shop</title>
+    
+    <link rel="stylesheet" href="exam-styles.css">
+</head>
+<body>
+
+<div class="header-top">
+    <div class="logo-box">PRÜFUNG</div>
+    <div style="font-weight: bold;">Schreiben: Beschwerdebrief</div>
+    <div class="info-top">
+        Deutsch - B2 | <span class="timer-highlight">Restzeit: <span id="time-display">30:00</span> Min</span>
+        <br>
+        <a class='btn-blue' href='../indexb2.html' onclick="saveAndReturn()">SPEICHERN & ZURÜCK</a>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="task-side">
+        <div class="yellow-box">Zeit: 30 Minuten | Mindestens 150 Wörter</div>
+
+        <div class="ad-full">
+            <h3 style="text-align: center; margin-top: 0;">Ihr Kosmetik-Shop</h3>
+			<h3 style="text-align: center; margin-top: 0;">Schönheit & Pflege für Sie!</h3>
+            <p>Entdecken Sie die neuesten Kosmetik- und Pflegeprodukte – alles für Ihre Schönheit und Ihr Wohlbefinden in unserem Laden!</p>
+            
+            <ul>
+                <li>Große Auswahl an hochwertigen Kosmetikprodukten</li>
+                <li>Namhafte Marken und exklusive Linien</li>
+                <li>Natürlich und dermatologisch getestete Pflegeartikel</li>
+                <li>Kompetente Beratung & individuelle Hautanalysen</li>
+                <li>Luxuriöse Parfums, edles Make-Up und feine Düfte</li>
+				<li>Entspannende Wellness-Produkte & Geschenke</li>
+            </ul>
+            
+            <p>Besuchen Sie uns in der Schönheitsstraße 77 und lassen Sie sich von
+unseren Experten beraten! Unser freundliches Team hilft Ihnen gerne
+dabei, die passenden Produkte für Ihre Bedürfnisse zu finden. Genießen
+Sie ein einzigartiges Einkaufserlebnis voller Schönheit und Wohlgefühl!
+100% ZUFRIEDENHEITS-GARANTIE!
+</p>
+            
+			<p>Beauty & Pflege</p>
+			
+            <p style="font-size: 11px; border-top: 1px solid #ccc; padding-top: 5px;">
+                <b>Kontakt:</b> Schönheitsstraße 77, 98765 Schönstadt<br>
+                Tel: +49 1234 98765 | www.beautyundpflege.de
+            </p>
+        </div>
+
+        <p>Sie haben bei der Firma „Beauty & Pflege“ ein Kosmetikprodukt gekauft.
+Nach der Anwendung traten gesundheitliche Probleme auf und Sie fühlen
+sich krank und unwohl. Trotz Beschwerden wurde Ihr Problem nicht
+angemessen behandelt. Schreiben Sie eine Beschwerde und gehen Sie
+dabei auf die genannten Punkte ein.
+</p>
+        
+        <p><b>Schreiben Sie eine Beschwerde. Behandeln Sie folgende Punkte:</b></p>
+        <ul>
+            <li>Erklären Sie, warum Sie mit einem bei uns gekauften Produkt unzufrieden sind.</li>
+            <li>Beschreiben Sie, welche gesundheitlichen Probleme nach der Anwendung auftraten.</li>
+            <li>Erläutern Sie, wie die Firma auf Ihre Beschwerden reagiert hat.</li>
+            <li>Schreiben Sie, was Sie jetzt von der Firma erwarten.</li>
+        </ul>
+        
+        <p style="font-size: 11px; color: #666; border-top: 1px solid #ddd; padding-top: 10px;">
+            Vergessen Sie nicht: Absender, Anschrift, Datum, Betreffzeile, Anrede und Schlussformel. Schreiben Sie mindestens 150 Wörter.
+        </p>
+    </div>
+
+    <div class="writing-side">
+        <div class="word-counter">
+            <div class="counter-left">
+                <span>Wörter: <span id="count">0</span> / 150</span>
+                <span>Zeichen: <span id="char-count">0</span></span>
+            </div>
+            <button class="btn-green" id="check-btn" onclick="checkText()">
+                🔍 Text überprüfen
+            </button>
+        </div>
+        <div class="textarea-container">
+            <textarea id="essay" placeholder="Fangen Sie hier an zu schreiben..."></textarea>
+        </div>
+
+        <div id="correction-panel" class="correction-panel">
+            <div class="correction-header">
+                <div class="correction-title">📝 Korrektur-Ergebnisse</div>
+                <button class="close-btn" onclick="closeCorrection()">✕ Schließen</button>
+            </div>
+            <div id="correction-content"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="notification" class="notification"></div>
+
+<script src="exam-script.js"></script>
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
+
+<!-- Mirrored from pruefung-b2.netlify.app/schreiben2_b2 by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 31 Jan 2026 16:05:07 GMT -->
+
+<!-- Mirrored from b2-telc.netlify.app/prufung-test/schreiben2_b2 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Feb 2026 03:28:26 GMT -->
+
+<!-- Mirrored from deuropa.app/quizz/schreiben22_b2 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:04:19 GMT -->
+</html>
