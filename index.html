@@ -129,7 +129,7 @@ body::after {
 /* Header */
 .header {
   text-align: center;
-  margin-bottom: 42px;
+  margin-bottom: 24px;
   max-width: 820px;
   animation: fadeInDown 0.8s ease-out 0.05s both;
 }
@@ -151,6 +151,32 @@ body::after {
   font-weight: 400;
   max-width: 620px;
   margin: 0 auto;
+}
+
+/* Main promo strip */
+.ayda-promo-strip {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 30px;
+  padding: 14px 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.88);
+  text-align: center;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+  animation: fadeInUp 0.8s ease-out 0.12s both;
+}
+
+.ayda-promo-strip strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.ayda-promo-strip span {
+  color: rgba(255,255,255,0.78);
+  font-size: 13px;
 }
 
 /* Level buttons */
@@ -318,6 +344,103 @@ body::after {
   border-radius: 999px;
 }
 
+/* Main contact card */
+.ayda-contact-card {
+  width: 100%;
+  max-width: 720px;
+  margin: 34px auto 0;
+  padding: 22px;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.74);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  animation: fadeInUp 0.8s ease-out 0.28s both;
+}
+
+.ayda-contact-card h3 {
+  color: var(--text-main);
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+
+.ayda-contact-card p {
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.ayda-contact-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ayda-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: var(--ayda-blue);
+  background: rgba(35,64,120,0.07);
+  border: 1px solid rgba(35,64,120,0.10);
+  padding: 9px 13px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.ayda-contact-link:hover {
+  background: rgba(216,168,79,0.18);
+  border-color: rgba(216,168,79,0.32);
+  transform: translateY(-1px);
+}
+
+.ayda-whatsapp-main {
+  color: #fff;
+  background: #25D366;
+  border-color: rgba(37,211,102,0.40);
+}
+
+.ayda-whatsapp-main:hover {
+  color: #fff;
+  background: #1fb95a;
+  border-color: rgba(37,211,102,0.55);
+}
+
+/* Floating WhatsApp */
+.floating-whatsapp {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 17px;
+  border-radius: 999px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px);
+  background: #1fb95a;
+  box-shadow: 0 18px 42px rgba(0,0,0,0.28);
+}
+
+.floating-whatsapp i {
+  font-size: 18px;
+}
+
 /* Footer */
 .footer {
   width: 100%;
@@ -333,6 +456,26 @@ body::after {
   margin: 0 auto;
   padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,0.16);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.86);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
 }
 
 .copyright {
@@ -371,7 +514,7 @@ body::after {
   }
 
   .header {
-    margin-bottom: 32px;
+    margin-bottom: 22px;
   }
 
   .buttons-container {
@@ -406,6 +549,18 @@ body::after {
     border-radius: 20px;
     font-size: 30px;
   }
+
+  .ayda-promo-strip {
+    margin-bottom: 24px;
+    padding: 13px 15px;
+  }
+
+  .floating-whatsapp {
+    right: 16px;
+    bottom: 16px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -437,7 +592,28 @@ body::after {
   .c1-features li {
     width: 100%;
   }
+
+  .ayda-contact-card {
+    padding: 20px 16px;
+  }
+
+  .ayda-contact-actions {
+    flex-direction: column;
+  }
+
+  .ayda-contact-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floating-whatsapp {
+    left: 16px;
+    right: 16px;
+    justify-content: center;
+  }
 }
+
+/* Login */
 .login-overlay {
   position: fixed;
   inset: 0;
@@ -551,6 +727,42 @@ body::after {
   font-weight: 600;
 }
 
+.ayda-login-note {
+  margin-top: 18px;
+  color: rgba(102, 112, 133, 0.95);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.ayda-login-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.ayda-login-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: var(--ayda-blue);
+  background: rgba(35,64,120,0.07);
+  border: 1px solid rgba(35,64,120,0.10);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.ayda-login-links a:hover {
+  background: rgba(216,168,79,0.18);
+  border-color: rgba(216,168,79,0.32);
+  transform: translateY(-1px);
+}
+
 body.locked {
   overflow: hidden;
 }
@@ -583,15 +795,39 @@ body.unlocked .login-overlay {
         <i class="fas fa-graduation-cap"></i>
         <span>AYDA Dil Akademisi</span>
       </div>
+
       <h2>Prüfungsbereich</h2>
       <p>Devam etmek için size verilen giriş şifresini yazınız.</p>
+
       <div class="password-row">
         <input type="password" id="passwordInput" placeholder="Şifre" autocomplete="current-password">
         <button type="button" onclick="checkPassword()">Giriş</button>
       </div>
+
       <div class="login-error" id="loginError">Şifre hatalı. Lütfen tekrar deneyiniz.</div>
+
+      <div class="ayda-login-note">
+        Bu çalışma alanı AYDA Dil Akademisi öğrencileri için hazırlanmıştır.
+        TELC hazırlık, online Almanca eğitimleri ve sınav süreçleri hakkında bilgi almak için bize ulaşabilirsiniz.
+      </div>
+
+      <div class="ayda-login-links">
+        <a href="https://wa.me/905419112503" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+        </a>
+        <a href="https://www.aydadil.com" target="_blank" rel="noopener">
+          <i class="fas fa-globe"></i>
+          Web
+        </a>
+        <a href="https://www.instagram.com/ayda.dil/" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+          Instagram
+        </a>
+      </div>
     </div>
   </div>
+
   <main class="main-content">
     <div class="brand-badge">
       <i class="fas fa-graduation-cap"></i>
@@ -601,6 +837,12 @@ body.unlocked .login-overlay {
     <div class="header">
       <h1>Willkommen zu unserem Test</h1>
       <p>Wir freuen uns, Sie hier zu haben.</p>
+    </div>
+
+    <div class="ayda-promo-strip">
+      <strong>AYDA Dil Akademisi</strong> ile TELC sınavına yönelik sistemli hazırlık.
+      <br>
+      <span>Online Almanca eğitimleri, sınav stratejileri ve öğrenci odaklı çalışma içerikleri.</span>
     </div>
 
     <div class="buttons-container">
@@ -614,10 +856,51 @@ body.unlocked .login-overlay {
         <div class="level-subtitle">TELC Vorbereitung</div>
       </a>
     </div>
+
+    <div class="ayda-contact-card">
+      <h3>Sorunuz mu var?</h3>
+      <p>
+        TELC hazırlık süreci, online Almanca kursları veya sınav organizasyonu hakkında bilgi almak için AYDA ekibiyle iletişime geçebilirsiniz.
+      </p>
+
+      <div class="ayda-contact-actions">
+        <a class="ayda-contact-link ayda-whatsapp-main" href="https://wa.me/905419112503" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp ile Ulaş
+        </a>
+
+        <a class="ayda-contact-link" href="https://www.aydadil.com" target="_blank" rel="noopener">
+          <i class="fas fa-globe"></i>
+          www.aydadil.com
+        </a>
+
+        <a class="ayda-contact-link" href="https://www.instagram.com/ayda.dil/" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+          Instagram
+        </a>
+      </div>
+    </div>
   </main>
+
+  <a class="floating-whatsapp" href="https://wa.me/905419112503" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i>
+    Sorunuz varsa bize ulaşın
+  </a>
 
   <footer class="footer">
     <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://www.aydadil.com" target="_blank" rel="noopener">
+          <i class="fas fa-globe"></i> www.aydadil.com
+        </a>
+        <a href="https://www.instagram.com/ayda.dil/" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i> @ayda.dil
+        </a>
+        <a href="https://wa.me/905419112503" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> 0541 911 25 03
+        </a>
+      </div>
+
       <div class="copyright">© 2026 AYDA Dil Akademisi</div>
     </div>
   </footer>
