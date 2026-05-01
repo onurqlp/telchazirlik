@@ -8,16 +8,13 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-2GXN9L87ZF');
-</script>	
-	
+</script>
 
-<!-- Mirrored from deuropa.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:01:11 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#234078">
 <title>TELC Prüfungen</title>
 
 <!-- Font Awesome -->
@@ -26,824 +23,649 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --ayda-blue: #234078;
+  --ayda-blue-dark: #172b52;
+  --ayda-blue-soft: #eef3fb;
+  --ayda-gold: #d8a84f;
+  --text-main: #14213d;
+  --text-muted: #667085;
+  --white: #ffffff;
+  --border: rgba(35, 64, 120, 0.14);
+  --shadow-soft: 0 20px 55px rgba(21, 42, 84, 0.16);
+  --shadow-card: 0 14px 35px rgba(21, 42, 84, 0.14);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow-x: hidden;
+html {
+  scroll-behavior: smooth;
 }
 
-/* خلفية متحركة */
+body {
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(216, 168, 79, 0.22) 0, transparent 28%),
+    radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.14) 0, transparent 28%),
+    linear-gradient(135deg, var(--ayda-blue-dark) 0%, var(--ayda-blue) 58%, #315992 100%);
+  min-height: 100vh;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 82%);
   pointer-events: none;
-  animation: pulse 8s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
-}
-
-        /* Top Banner */
-        .top-banner {
-            background: linear-gradient(90deg, #00b4d8 0%, #0096c7 100%);
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            direction: rtl;
-            font-size: 14px;
-        }
-
-        .telegram-btn {
-            background: white;
-            color: #0096c7;
-            padding: 8px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-left: 10px;
-        }
-
-/* زر تسجيل الخروج */
-.logout-button {
+body::after {
+  content: '';
   position: fixed;
-  top: 80px;
-  right: 30px;
-  padding: 12px 24px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  border: 2px solid rgba(255,255,255,0.3);
-  z-index: 999;
+  width: 420px;
+  height: 420px;
+  right: -180px;
+  bottom: -190px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  filter: blur(4px);
+  pointer-events: none;
 }
 
-.logout-button:hover {
-  background: rgba(255,255,255,0.25);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* المحتوى الرئيسي */
+/* Main layout */
 .main-content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 54px 20px 44px;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* العنوان */
+/* AYDA brand badge */
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.94);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  backdrop-filter: blur(14px);
+  animation: fadeInDown 0.75s ease-out both;
+}
+
+.brand-badge i {
+  color: var(--ayda-gold);
+}
+
+.brand-badge span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Header */
 .header {
   text-align: center;
-  margin-bottom: 50px;
-  animation: fadeInDown 0.8s ease-out;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-bottom: 42px;
+  max-width: 820px;
+  animation: fadeInDown 0.8s ease-out 0.05s both;
 }
 
 .header h1 {
-  color: white;
-  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--white);
+  font-size: clamp(2.25rem, 5.6vw, 4.65rem);
+  line-height: 1.05;
   font-weight: 700;
-  margin-bottom: 15px;
-  text-shadow: 2px 4px 10px rgba(0,0,0,0.2);
-  letter-spacing: 1px;
+  letter-spacing: -1.6px;
+  margin-bottom: 18px;
+  text-shadow: 0 12px 38px rgba(0,0,0,0.24);
 }
 
 .header p {
-  color: rgba(255,255,255,0.9);
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(255,255,255,0.88);
+  font-size: clamp(1rem, 2vw, 1.22rem);
+  line-height: 1.7;
   font-weight: 400;
-  text-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+  max-width: 620px;
+  margin: 0 auto;
 }
 
-/* حاوية الأزرار */
+/* Level buttons */
 .buttons-container {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(190px, 240px));
+  gap: 24px;
   justify-content: center;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
+  width: 100%;
+  animation: fadeInUp 0.8s ease-out 0.18s both;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* أزرار B1 و B2 */
 .level-button {
+  min-height: 210px;
   position: relative;
-  width: 200px;
-  height: 200px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 30px;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 14px;
   text-decoration: none;
-  color: #667eea;
-  font-size: 48px;
-  font-weight: 700;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  border-radius: 28px;
+  background: rgba(255,255,255,0.96);
+  color: var(--ayda-blue);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.72);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .level-button::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.level-button:hover::before {
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 30% 15%, rgba(216,168,79,0.24), transparent 34%),
+    linear-gradient(135deg, var(--white), #f7f9fd 52%, #edf3fb);
   opacity: 1;
-}
-
-.level-button:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  color: white;
-}
-
-.level-button span {
-  position: relative;
-  z-index: 1;
+  transition: opacity 0.3s ease;
 }
 
 .level-button::after {
-  content: '';
-  position: absolute;
-  bottom: 20px;
-  width: 50px;
-  height: 4px;
-  background: currentColor;
-  border-radius: 2px;
-  transition: width 0.4s ease;
+  content: 'Zur Prüfung';
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(35, 64, 120, 0.68);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(35, 64, 120, 0.075);
+  border: 1px solid rgba(35, 64, 120, 0.10);
+  transition: all 0.3s ease;
+}
+
+.level-button:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 58px rgba(8, 24, 58, 0.26);
+  border-color: rgba(216, 168, 79, 0.58);
 }
 
 .level-button:hover::after {
-  width: 100px;
+  color: var(--ayda-blue);
+  background: rgba(216, 168, 79, 0.18);
+  border-color: rgba(216, 168, 79, 0.32);
 }
 
-/* قسم التواصل الاجتماعي */
-.social-section {
-  margin-top: 60px;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
+.level-button span {
+  display: block;
+  font-size: clamp(3.1rem, 6vw, 4.25rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
-.social-buttons {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+.level-button .level-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.social-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.social-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.social-btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.social-btn i,
-.social-btn svg {
-  position: relative;
-  z-index: 1;
-  font-size: 20px;
-}
-
-.social-btn span {
-  position: relative;
-  z-index: 1;
-}
-
-.social-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* ألوان الأزرار الاجتماعية */
-.social-btn.telegram {
-  background: linear-gradient(135deg, #0088cc, #1c9dd9);
-}
-
-.social-btn.whatsapp {
-  background: linear-gradient(135deg, #25D366, #128C7E);
-}
-
-.social-btn.instagram {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-}
-
-/* استجابة للموبايل */
-@media (max-width: 768px) {
-  .top-banner {
-    padding: 10px 15px;
-  }
-  
-  .banner-text {
-    font-size: 12px;
-    text-align: center;
-  }
-  
-  .telegram-btn {
-    font-size: 12px;
-    padding: 6px 14px;
-  }
-  
-  .logout-button {
-    top: 70px;
-    right: 15px;
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-  
-  .header h1 {
-    font-size: 2.5rem;
-  }
-  
-  .header p {
-    font-size: 1.1rem;
-  }
-  
-  .level-button {
-    width: 160px;
-    height: 160px;
-    font-size: 40px;
-  }
-  
-  .buttons-container {
-    gap: 20px;
-  }
-  
-  .social-btn {
-    padding: 12px 24px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .level-button {
-    width: 140px;
-    height: 140px;
-    font-size: 36px;
-  }
-  
-  .social-buttons {
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .social-btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* تأثيرات إضافية */
-.floating {
-  animation: floating 3s ease-in-out infinite;
-}
-
-@keyframes floating {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-        /* Footer */
-        .footer {
-            background: #2d3748;
-            color: #cbd5e0;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            margin-bottom: 20px;
-        }
-
-        .footer-link {
-            color: #cbd5e0;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: #667eea;
-        }
-
-        .copyright {
-            font-size: 0.9em;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(203, 213, 224, 0.2);
-        }
-
-        .developer-credit {
-            margin-top: 10px;
-            font-size: 0.85em;
-            color: #a0aec0;
-        }
-
-        .developer-credit a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .developer-credit a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-
-            .test-options {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .register-btn {
-                position: static;
-                margin-bottom: 20px;
-            }
-
-            .test-card {
-                padding: 40px 60px;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .contact-btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-		
-/* ===== C1 Banner ===== */
+/* C1 info banner */
 .c1-banner {
-  position: relative;
-  max-width: 680px;
-  margin: 50px auto 10px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(16px);
-  border-radius: 24px;
-  padding: 35px 30px;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 0 1.5px rgba(255,255,255,0.25);
+  width: 100%;
+  max-width: 720px;
+  margin: 44px auto 0;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.75);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
   overflow: hidden;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
+  position: relative;
+  animation: fadeInUp 0.8s ease-out 0.34s both;
 }
 
 .c1-banner::before {
   content: '';
   position: absolute;
-  top: -60%;
-  right: -30%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  inset: 0;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(216,168,79,0.18), transparent 38%),
+    linear-gradient(90deg, rgba(35,64,120,0.045), transparent);
   pointer-events: none;
 }
 
 .c1-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  position: relative;
+  color: var(--ayda-blue);
   font-size: 12px;
   font-weight: 700;
-  padding: 5px 16px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--ayda-blue-soft);
+  border: 1px solid var(--border);
+  margin-bottom: 18px;
 }
 
 .c1-content {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 25px;
-  margin-bottom: 25px;
-  text-align: left;
+  gap: 24px;
 }
 
 .c1-level {
   flex-shrink: 0;
-  width: 90px;
-  height: 90px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 20px;
+  width: 92px;
+  height: 92px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--ayda-blue), #315992);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 700;
-  color: #764ba2;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  animation: floating 3s ease-in-out infinite;
+  box-shadow: 0 14px 28px rgba(35,64,120,0.25);
 }
 
 .c1-text h2 {
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  text-shadow: 1px 2px 6px rgba(0,0,0,0.15);
-}
-
-.c1-text p {
-  color: rgba(255,255,255,0.88);
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 12px;
+  color: var(--text-main);
+  font-size: 21px;
+  line-height: 1.35;
+  margin-bottom: 10px;
 }
 
 .c1-features {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 9px;
 }
 
 .c1-features li {
-  color: white;
+  color: var(--ayda-blue);
   font-size: 13px;
-  background: rgba(255,255,255,0.15);
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.25);
+  font-weight: 600;
+  background: rgba(35,64,120,0.07);
+  border: 1px solid rgba(35,64,120,0.10);
+  padding: 7px 12px;
+  border-radius: 999px;
 }
 
-.c1-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.95);
-  color: #764ba2;
-  padding: 15px 32px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+/* Footer */
+.footer {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 24px 20px 32px;
+  text-align: center;
+  color: rgba(255,255,255,0.72);
 }
 
-.c1-btn:hover {
-  transform: translateY(-3px);
-  background: white;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.3);
-  color: #667eea;
+.footer-content {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.16);
 }
 
-.c1-btn .arrow {
-  width: 18px;
-  height: 18px;
-  transition: transform 0.3s ease;
+.copyright {
+  font-size: 13px;
 }
 
-.c1-btn:hover .arrow {
-  transform: translateX(4px);
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (max-width: 600px) {
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 38px 16px 34px;
+  }
+
+  .brand-badge {
+    margin-bottom: 24px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .buttons-container {
+    grid-template-columns: repeat(2, minmax(135px, 1fr));
+    gap: 16px;
+  }
+
+  .level-button {
+    min-height: 166px;
+    border-radius: 22px;
+  }
+
+  .level-button::after {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
+  .c1-banner {
+    margin-top: 30px;
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .c1-content {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .c1-level {
+    width: 74px;
+    height: 74px;
+    border-radius: 20px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 520px) {
+  .main-content {
+    align-items: stretch;
+  }
+
+  .brand-badge {
+    align-self: center;
+  }
+
+  .buttons-container {
+    grid-template-columns: 1fr;
+  }
+
+  .level-button {
+    min-height: 136px;
+  }
+
   .c1-content {
     flex-direction: column;
-    text-align: center;
+    text-align: left;
   }
+
   .c1-features {
-    justify-content: center;
+    flex-direction: column;
   }
-  .c1-banner {
-    margin: 30px 15px 10px;
-    padding: 25px 20px;
+
+  .c1-features li {
+    width: 100%;
   }
 }
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(216,168,79,0.22), transparent 34%),
+    linear-gradient(135deg, var(--ayda-blue-dark), var(--ayda-blue));
+}
 
-/* ===== Donation Section ===== */
-.donation-box {
-  max-width: 700px;
-  margin: 50px auto;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 25px 20px;
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: 30px;
+  padding: 32px 26px;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.24);
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-.donation-box h3 {
-  margin-bottom: 10px;
-  color: #1f3655;
-  font-size: 22px;
-}
-
-.donation-box p {
-  color: #555;
-  font-size: 15px;
-  line-height: 1.6;
+.login-card .brand-badge-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ayda-blue);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 
-/* زر PayPal */
-.donation-btn {
-  display: inline-flex;
+.login-card .brand-badge-login i {
+  color: var(--ayda-gold);
+}
+
+.login-card h2 {
+  color: var(--text-main);
+  font-size: 25px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.login-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.password-row {
+  display: flex;
+  gap: 10px;
   align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #0070ba, #003087); /* PayPal Blue */
-  color: #ffffff;
-  padding: 12px 22px;
-  border-radius: 30px;
+  margin-bottom: 12px;
+}
+
+.password-row input {
+  flex: 1;
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0 15px;
+  color: var(--text-main);
+  font-family: inherit;
   font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 6px 14px rgba(0, 48, 135, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+  background: #f8fafc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.donation-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 48, 135, 0.55);
+.password-row input:focus {
+  border-color: rgba(35,64,120,0.55);
+  box-shadow: 0 0 0 4px rgba(35,64,120,0.10);
+  background: #fff;
 }
 
-/* أيقونة PayPal */
-.donation-btn i {
-  font-size: 18px;
+.password-row button {
+  height: 48px;
+  border: 0;
+  border-radius: 16px;
+  padding: 0 18px;
+  background: var(--ayda-blue);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
+.password-row button:hover {
+  transform: translateY(-1px);
+  background: var(--ayda-blue-dark);
+  box-shadow: 0 10px 24px rgba(35,64,120,0.24);
+}
 
-/* ===== Bank Transfer ===== */
-
-.bank-toggle {
-  margin-top: 15px;
-  padding: 8px 18px;
-  background: rgba(0, 112, 186, 0.08); /* خفيف */
-  border: 1px solid rgba(0, 112, 186, 0.25);
-  color: #003087; /* أزرق PayPal */
-  border-radius: 20px;
+.login-error {
+  display: none;
+  color: #b42318;
+  background: #fff1f0;
+  border: 1px solid rgba(180,35,24,0.14);
+  padding: 10px 12px;
+  border-radius: 14px;
   font-size: 13px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
 }
 
-.bank-toggle:hover {
-  background: rgba(0, 112, 186, 0.15);
-  transform: translateY(-1px);
+body.locked {
+  overflow: hidden;
 }
 
-.bank-details {
+body.unlocked .login-overlay {
   display: none;
-  margin-top: 15px;
-  background: #f7f9fc;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #333;
-  text-align: left;
 }
 
-.bank-details span {
-  display: block;
-  margin-bottom: 6px;
+@media (max-width: 520px) {
+  .login-card {
+    padding: 28px 20px;
+    border-radius: 24px;
+  }
+
+  .password-row {
+    flex-direction: column;
+  }
+
+  .password-row button {
+    width: 100%;
+  }
 }
-
-
 </style>
 </head>
 
-<body>
-
-<!-- الشريط العلوي -->
-<!--<div class="top-banner">
-  <div class="banner-text">
-بالتوفيق للجميع
-  </div>
-  <a href="https://t.me/+Ol_rmVMqm-xmMzNk" target="_blank" class="telegram-btn">
-    <svg width="18" height="18" viewBox="0 0 240 240" fill="currentColor">
-      <path d="M179.9 73.7L153 172.6c-2 7.1-7.3 8.9-14.8 5.6l-41-30.2-19.8 19c-2.2 2.2-4 4-8.2 4l2.9-41.4 75.4-68c3.3-2.9-.7-4.5-5.1-1.6l-93.2 58.7-40.1-12.5c-8.7-2.7-8.9-8.7 1.8-12.9l156.9-60.5c7.3-2.7 13.6 1.8 11.2 13.5z"/>
-    </svg>
-    <span>Telegram</span>
-  </a>-->
-</div>
-
-<!-- زر تسجيل الخروج 
-<a href="index.html" class="logout-button">
-  <i class="fas fa-sign-out-alt"></i> Abmelden
-</a> -->
-
-<!-- المحتوى الرئيسي -->
-<div class="main-content">
-  <!-- العنوان -->
-  <div class="header">
-    <h1>Willkommen zu unserem Test</h1>
-    <p>Wir freuen uns, Sie hier zu haben.</p>
-  </div>
-
-  <!-- أزرار المستويات -->
-  <div class="buttons-container">
-    <a href="indexb1.html" class="level-button floating">
-      <span>B1</span>
-    </a>
-    <a href="indexb2.html" class="level-button floating" style="animation-delay: 0.5s;">
-      <span>B2</span>
-    </a>
-  </div>
-
-  <!-- بانر C1 الإعلاني -->
-  <div class="c1-banner">
-    <div class="c1-badge">✨ Neu verfügbar</div>
-    <div class="c1-content">
-      <div class="c1-level">C1</div>
-      <div class="c1-text">
-      <!--  <h2>Bereit für das nächste Level?</h2>
-        <p>Du hast B2 gemeistert? Tritt jetzt unserer exklusiven C1-Gruppe bei und bringe dein Deutsch auf ein professionelles Niveau!</p> -->
-        <ul class="c1-features">
-          <li>✅ Exklusive Fortgeschritteninhalte</li>
-          <li>✅ Vorbereitung auf offizielle C1-Prüfungen</li>
-        <!--  <li>✅ Zu einem symbolischen Preis</li>-->
-        </ul>
+<body class="locked">
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+      <div class="brand-badge-login">
+        <i class="fas fa-graduation-cap"></i>
+        <span>AYDA Dil Akademisi</span>
       </div>
+      <h2>Prüfungsbereich</h2>
+      <p>Devam etmek için size verilen giriş şifresini yazınız.</p>
+      <div class="password-row">
+        <input type="password" id="passwordInput" placeholder="Şifre" autocomplete="current-password">
+        <button type="button" onclick="checkPassword()">Giriş</button>
+      </div>
+      <div class="login-error" id="loginError">Şifre hatalı. Lütfen tekrar deneyiniz.</div>
     </div>
-    <a href="https://t.me/+V3U-M-fx3kEyNTA0" target="_blank" class="c1-btn">
-      <i class="fab fa-telegram"></i>
-      <span>Jetzt der C1-Gruppe beitreten</span>
-      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
   </div>
+  <main class="main-content">
+    <div class="brand-badge">
+      <i class="fas fa-graduation-cap"></i>
+      <span>AYDA Dil Akademisi</span>
+    </div>
 
-  <!-- قسم التواصل الاجتماعي -->
-  <div class="social-section">
-    <div class="social-buttons">
-      <a href="https://t.me/+Ol_rmVMqm-xmMzNk" target="_blank" class="social-btn telegram">
-        <i class="fab fa-telegram"></i>
-        <span>انضم لمجموعة Telegram B1/B2</span>
+    <div class="header">
+      <h1>Willkommen zu unserem Test</h1>
+      <p>Wir freuen uns, Sie hier zu haben.</p>
+    </div>
+
+    <div class="buttons-container">
+      <a href="indexb1.html" class="level-button">
+        <span>B1</span>
+        <div class="level-subtitle">TELC Vorbereitung</div>
+      </a>
+
+      <a href="indexb2.html" class="level-button">
+        <span>B2</span>
+        <div class="level-subtitle">TELC Vorbereitung</div>
       </a>
     </div>
- 
+  </main>
 
-  <!-- Adsterra Native Ad -->
-<!-- <script async="async" data-cfasync="false"
-src="https://pl28692012.effectivegatecpm.com/0443e4a61b0ca8d7492f98394f6ef58b/invoke.js"></script>
-<div id="container-0443e4a61b0ca8d7492f98394f6ef58b"></div> -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="copyright">© 2026 AYDA Dil Akademisi</div>
+    </div>
+  </footer>
 
-<!--<div class="donation-box">
-  <h3>❤️ دعم الموقع</h3>
-  <p>
-    كل مساهمة، مهما كانت صغيرة، تحدث فرقاً كبيراً في تطوير هذا المشروع.  
-    نحن ممتنون جداً لدعمكم واهتمامكم بتحسين التعليم المجاني.
-  </p>
+  <script>
+    const validPasswords = [
+      "b1",
+      "aydatelc"
+      // Yeni şifre eklemek için buraya virgül koyup alt satıra yaz:
+      // ,"yenisifre"
+    ];
 
-  <!-- زر تبرع عام 
-<a href="https://www.paypal.me/ouardidev"
-   target="_blank"
-   class="donation-btn"
-   title="PayPal Unterstützung">
-   
-  <i class="fab fa-paypal"></i>
-  Support
-</a>
+    const passwordInput = document.getElementById("passwordInput");
+    const loginError = document.getElementById("loginError");
 
-  <!-- زر إظهار التحويل البنكي 
-  <button class="bank-toggle" onclick="toggleBank()">
-    💳 أو عبر تحويل بنكي
-  </button>
+    function unlockPage() {
+      document.body.classList.remove("locked");
+      document.body.classList.add("unlocked");
+      sessionStorage.setItem("aydaTelcAccess", "true");
+    }
 
-  <!-- معلومات التحويل البنكي 
-  <div class="bank-details" id="bankBox">
-    <span><strong>الاسم:</strong> AHMED OUARDI</span>
-    <span><strong>البنك:</strong> CIH BANK</span>
-	<span><strong>RIB:</strong> 230 270 2626047211007100 30</span>
-    <span><strong>IBAN:</strong> MA64 2302 7026 2604 7211 0071 0030</span>
-    <span><strong>BIC / SWIFT:</strong> CIHMMAC</span>
-    <span><strong>المرجع:</strong> Donation</span>
-  </div>
+    function checkPassword() {
+      const enteredPassword = passwordInput.value.trim();
 
-  <div class="donation-note">
-    !التبرع اختياري 100% - المحتوى سيبقى مجانياً للجميع دائماً
-  </div>
-</div> -->
+      if (validPasswords.includes(enteredPassword)) {
+        unlockPage();
+      } else {
+        loginError.style.display = "block";
+        passwordInput.value = "";
+        passwordInput.focus();
+      }
+    }
 
-  
-<!--</div>
+    passwordInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        checkPassword();
+      }
+    });
 
-    <!-- Footer 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#" class="footer-link">الرئيسية</a>
-                <a href="#" class="footer-link">عن الموقع</a>
-                <a href="https://t.me/+Ol_rmVMqm-xmMzNk" class="footer-link">اتصل بنا</a>
-                <a href="privacy-policy.html" class="footer-link">سياسة الخصوصية</a>
-            </div>
-            
-            <div class="copyright">
-                © 2026 جميع الحقوق محفوظة | OuardiDev
-            </div>
-            
-            <div class="developer-credit">
-                تم التطوير بواسطة <a href="https://t.me/+Ol_rmVMqm-xmMzNk">OuardiDev</a>
-            </div>
-        </div>
-    </footer>-->
+    if (sessionStorage.getItem("aydaTelcAccess") === "true") {
+      unlockPage();
+    } else {
+      passwordInput.focus();
+    }
+  </script>
 
-<script>
-function toggleBank() {
-  const box = document.getElementById("bankBox");
-  box.style.display = box.style.display === "block" ? "none" : "block";
-}
-</script>
-
-<!-- Cloudflare Pages Analytics --><script defer src='../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
-
-<!-- Mirrored from deuropa.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:01:13 GMT -->
+  <!-- Cloudflare Pages Analytics -->
+  <script defer src='../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script>
+  <!-- Cloudflare Pages Analytics -->
+</body>
 </html>
