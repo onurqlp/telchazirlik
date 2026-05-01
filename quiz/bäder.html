@@ -1,0 +1,549 @@
+<!DOCTYPE html><html>
+<!-- Mirrored from deuropa.app/quiz/bäder by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8"><meta name="download_date" content="2026-01-29T05:38:47.394Z"/>
+  
+  <title>Lesen Teil 1 - Bäder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #a78bfa;
+      --danger-color: #ef4444;
+      --light-bg: #ecf0f1;
+      --dark-text: #2c3e50;
+      --light-text: #ffffff;
+      --border-radius: 10px;
+      --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --box-shadow-hover: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; margin: 0; padding: 10px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: var(--dark-text);
+      animation: fadeInPage 0.8s ease-out; min-height: 100vh;
+    }
+    @media (min-width: 600px) { body { padding: 15px; } }
+    @media (min-width: 992px) { body { padding: 20px; } }
+    @keyframes fadeInPage { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+    .main-header {
+      background-color: var(--primary-color); color: var(--light-text); padding: 12px 15px;
+      font-size: 20px; margin-bottom: 20px; border-radius: var(--border-radius);
+      text-align: center; font-weight: 600; box-shadow: var(--box-shadow); letter-spacing: 0.5px;
+    }
+    @media (min-width: 768px) { .main-header { padding: 20px 25px; font-size: 26px; margin-bottom: 25px; } }
+    .container { display: flex; flex-direction: row; justify-content: space-between; gap: 15px; }
+    @media(min-width: 992px) { .container { gap: 20px; } }
+    .left-column { width: 58%; flex-shrink: 0; }
+    .right-column { width: 38%; flex-shrink: 0; }
+    .quiz-scroll-container, .right-column-content {
+      background-color: var(--light-text); border-radius: var(--border-radius); padding: 10px;
+      box-shadow: var(--box-shadow); max-height: 75vh; overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: thin; scrollbar-color: var(--primary-color) var(--light-bg);
+    }
+    @media (min-width: 992px) { .quiz-scroll-container, .right-column-content { padding: 15px; max-height: 70vh; } }
+    .quiz-scroll-container::-webkit-scrollbar, .right-column-content::-webkit-scrollbar { width: 6px; }
+    @media (min-width: 992px) { .quiz-scroll-container::-webkit-scrollbar, .right-column-content::-webkit-scrollbar { width: 8px; } }
+    .quiz-scroll-container::-webkit-scrollbar-track, .right-column-content::-webkit-scrollbar-track { background: var(--light-bg); border-radius: var(--border-radius); }
+    .quiz-scroll-container::-webkit-scrollbar-thumb, .right-column-content::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: var(--border-radius); border: 2px solid var(--light-bg); }
+    .question-box {
+      border: 1px solid #bdc3c7; border-left: 4px solid var(--primary-color); border-radius: var(--border-radius);
+      margin-bottom: 15px; padding: 10px; background-color: #fdfdfd;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      display: flex; flex-direction: column; min-height: 120px;
+    }
+    @media (min-width: 992px) { .question-box { border-left-width: 5px; margin-bottom: 20px; padding: 15px; min-height: 150px; } }
+    .question-box:hover { transform: translateY(-3px); box-shadow: var(--box-shadow-hover); }
+    .email-fields { margin-bottom: 8px; }
+    @media (min-width: 992px) { .email-fields { margin-bottom: 10px; } }
+    .drop-target {
+      background-color: #f9f9f9; padding: 10px; border: 2px dashed #cccccc; min-height: 40px;
+      border-radius: 6px; text-align: center; transition: background-color 0.3s, border-color 0.3s;
+      display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; /* Added cursor */
+    }
+    @media (min-width: 992px) { .drop-target { padding: 12px; min-height: 45px; border-radius: 8px; } }
+    .drop-target.empty-drop-target::before { content: "Drop here"; color: #aaa; font-style: italic; font-size: 0.8em; }
+    @media (min-width: 992px) { .drop-target.empty-drop-target::before { content: "Antwort hier ablegen"; font-size: 0.9em; } }
+    .drop-target:not(.empty-drop-target)::before { content: ""; }
+    .drop-target:hover, .drop-target.drag-over { background-color: #f5f3ff; border-color: var(--primary-color); }
+    .question-text { font-size: 0.8em; color: #555; line-height: 1.5; overflow-y: auto; max-height: 200px; padding-right: 5px; }
+    @media (min-width: 992px) { .question-text { font-size: 0.9em; line-height: 1.6; max-height: 300px; } }
+    .draggable {
+      background-color: #e0e0e0; color: var(--dark-text); margin: 8px 0; padding: 8px 10px;
+      border-radius: 6px; cursor: grab; display: flex; align-items: center; justify-content: center;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s, outline 0.2s;
+      user-select: none; font-size: 0.85em; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center; word-break: break-word;
+    }
+    @media (min-width: 992px) { .draggable { margin: 10px 0; padding: 12px 15px; border-radius: 8px; font-size: 0.95em; } }
+    .draggable:hover { background-color: #d0d0d0; transform: scale(1.02); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .draggable.dragging { opacity: 0.6; transform: scale(0.95); box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: grabbing; }
+
+    /* NEW CSS for selected draggable */
+    .draggable.selected {
+      outline: 3px solid var(--primary-color);
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+      background-color: #e9d5ff;
+    }
+    .draggable.selected:hover {
+        background-color: #ddd6fe;
+        transform: scale(1.03);
+    }
+
+    .drop-target.correct { background-color: #f3e8ff !important; border: 2px solid var(--secondary-color) !important; }
+    .drop-target.correct::after {
+      content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--secondary-color);
+      position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 1em;
+    }
+    @media (min-width: 992px) { .drop-target.correct::after { right: 10px; font-size: 1.2em; } }
+    .drop-target.incorrect { background-color: #fee2e2 !important; border: 2px solid var(--danger-color) !important; }
+    .drop-target.incorrect::after {
+      content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--danger-color);
+      position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 1em;
+    }
+    @media (min-width: 992px) { .drop-target.incorrect::after { right: 10px; font-size: 1.2em; } }
+    .drop-target .draggable { background-color: var(--primary-color); color: var(--light-text); width: calc(100% - 25px); padding-right: 0; margin: 0; }
+    @media (min-width: 992px) { .drop-target .draggable { width: calc(100% - 40px); } }
+    .drop-target.correct .draggable { background-color: var(--secondary-color) !important; }
+    .drop-target.incorrect .draggable { background-color: var(--danger-color) !important; }
+    .button-container { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    @media (min-width: 992px) { .button-container { margin-top: 25px; gap: 15px; } }
+    .quiz-button, .quiz-button-link {
+      padding: 10px 20px; border: none; background-color: var(--primary-color); color: white !important;
+      font-size: 14px; font-weight: 500; border-radius: var(--border-radius); cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: var(--box-shadow); text-decoration: none;
+    }
+    @media (min-width: 992px) { .quiz-button, .quiz-button-link { padding: 12px 25px; font-size: 16px; } }
+    .quiz-button:hover, .quiz-button-link:hover { background-color: #5568d3; transform: translateY(-2px); box-shadow: var(--box-shadow-hover); color: white !important; }
+    .quiz-button:active, .quiz-button-link:active { transform: translateY(0px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .quiz-button.secondary, .quiz-button-link.secondary { background-color: #8b5cf6; }
+    .quiz-button.secondary:hover, .quiz-button-link.secondary:hover { background-color: #7c3aed; }
+
+    .answers-section {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 15px 20px;
+      box-shadow: var(--box-shadow);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .answers-section h3 {
+      color: var(--primary-color);
+      margin-bottom: 12px;
+      font-size: 1em;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 6px;
+    }
+    .answers-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .answers-table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9em;
+    }
+    .answers-table td:first-child {
+      font-weight: bold;
+      color: var(--primary-color);
+      width: 60px;
+      text-align: center;
+    }
+    .answers-table td:nth-child(2) {
+      font-weight: bold;
+      color: var(--secondary-color);
+      width: 40px;
+      text-align: center;
+    }
+    .show-answers-btn {
+      display: block;
+      margin: 15px auto 0;
+      padding: 8px 20px;
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    .show-answers-btn:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    #result {
+      text-align: center; margin-top: 20px; padding: 12px; font-size: 1em; font-weight: 500;
+      background-color: var(--light-text); border-radius: var(--border-radius); box-shadow: var(--box-shadow);
+    }
+    @media (min-width: 992px) { #result { margin-top: 25px; padding: 15px; font-size: 1.1em; } }
+    #result .correct-count { color: var(--secondary-color); }
+    #result .total-count { color: var(--primary-color); }
+
+    #warningBox {
+  display: none;
+  position: fixed;
+  top: 20px;                  
+  left: 50%;                  
+  transform: translateX(-50%);
+  background: #f81d1d;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 9999;
+}
+  </style>
+</head>
+<body>
+
+<div class="main-header">Lesen Teil 1 - Bäder</div>
+
+<div class="container">
+  <div class="left-column">
+    <div class="quiz-scroll-container">
+      <!-- Question 1 -->
+      <div class="question-box" data-correct="Bäder, Seen und Natur - im hessischen Paradies">
+          <div class="email-fields">
+            <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          </div>
+          <div class="question-text">Entdecken Sie interessante Städte und Regionen. Im Herzen Deutschlands liegen wunderbare Landschaften, mit einem für deutsche Verhältnisse sehr milden Klima - und keine typischen „Touristenziele". Von der Stadt Gießen ausgehend kann man in den hessischen Kreisen Bergstraße und Waldeck-Frankenberg viele Orte entdecken, die noch ein Geheimtipp sind. Vor allem gilt dies für den Kreis Waldeck-Frankenberg. Wer nicht gerade in Hessen wohnt, wird kaum wissen, wo diese Region eigentlich liegt. Es ist ein herrliches Stück Deutschland ohne besonders große Städte, eine Gegend, die Natur pur bietet. Daher wundert es nicht, dass man hier einige Kurorte findet wie Bad Arolsen oder Bad Wildungen oder den Luftkurort Edertal-Kleinern. Apropos Edertal: Der zwölf Quadratkilometer große Edersee gehört zu den vier schönen „blauen Augen" des Kreises. Der Landkreis Waldeck-Frankenberg ist Hessens attraktivstes Umland. In der Region der Berge und Seen spürt man auch heute noch einen Hauch von Fürstlichkeit: Majestätisch erhebt sich über dem Edersee das Schloss Waldeck. Auch in Bad Arolsen, einer ehemaligen Residenzstadt, ist vieles noch vom früheren Adel geprägt. Unbedingt besuchen sollte man darüber hinaus das über 1000 Jahre alte Korbach wie auch die Fachwerkstadt Frankenberg.</div>
+      </div>
+      <!-- Question 2 -->
+      <div class="question-box" data-correct="Am Strand im Dienst - mehr Sicherheit für Urlauber">
+          <div class="email-fields">
+            <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          </div>
+          <div class="question-text">Pferde waren schon immer Melanie Schilles Leidenschaft. „Und jetzt kann ich Hobby und Beruf miteinander verbinden", freut sich die Beamtin aus Hannover. In diesem Jahr verstärkt sie die Strandwache an der Nordseeküste. Ihr Arbeitsplatz ist der Strand: Mit „Magnus", einem 11-jährigen Pferd, patrouilliert sie dort, wo die Kleinen Sandburgen bauen, Urlauber bei einem Buch entspannen oder sich in die kühlen Fluten stürzen. Melanie Schille und ihr Hannoveraner sind eine Attraktion in dem Ferienort. Immer wieder wollen Gäste das Tier streicheln, von der Polizistin wissen, was sie hier macht. „Wir sorgen für mehr Sicherheit am Strand", erklären Melanie Schille und Rüdiger Teichmann (42). Sie suchen im Watt nach Vermissten, klären über Gefahren auf, verhindern Diebstähle und Sachbeschädigungen. Nachweislich gingen die Delikte zurück, seit es die Streife hoch zu Ross gibt. Die Polizisten: „Wir sind in dem unwegsamen Gelände oft schneller am Einsatzort als die Kollegen per Fahrrad oder mit dem Auto. Außerdem schonen wir die Natur." Für sich persönlich sieht Melanie Schille noch einen großen Vorteil: „Es ist schön, mal keine Demonstration sichern zu müssen, stattdessen genieße ich die frische Luft mit fröhlichen Urlaubern." Nur eins vermisst die 22-Jährige, die mit Polizeipferd „Magnus" auf einem Bauernhof Quartier bezogen hat, während ihres sechswöchigen Einsatzes: Freund Robert (23). Er fährt als Polizist in Hannover Streife - und wartet auf sie.</div>
+      </div>
+      <!-- Question 3 -->
+      <div class="question-box" data-correct="Nach harter Arbeit durch nordische Gewässer">
+          <div class="email-fields">
+            <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          </div>
+          <div class="question-text">Ein neuer Urlaubstrend setzt sich durch: Statt faul am Strand zu liegen, wird man aktiv. Ein besonders beliebtes Ziel ist Schweden: So kann man am Ufer des Flusses Klarälven in der Provinz Värmland selbst ein Floß bauen. Das dauert drei bis sechs Stunden, anschließend macht man darauf Urlaub. „Das ist Abenteuerurlaub pur", schwärmt Johan Bengtson, der mit seiner Frau und den drei Kindern zum zweiten Mal Floßferien macht. „Sich auf dem Fluss treiben lassen und in der Wildnis leben - dieses Gefühl ist super!" Seit zehn Jahren veranstaltet Marie Junler von der Agentur Vildmark i Värmland die Holzfloßtrips. Wir haben die Bengtsons an ihrem ersten Urlaubstag begleitet. Mit dabei ist auch Veranstalterin Marie Junler, die der Familie hilft, das Floß zu bauen. Es ist ein herrlicher Sonnentag. In einer sanften Kurve des Flusses Klarälven steht Marie bis zu den Hüften im tiefblauen Wasser. Mit dicken grünen Seilen schnürt sie Holzstämme zusammen und gibt Kommandos: „Einer hält den Stamm, der andere knotet - den Seemannsknoten, wie wir ihn vorhin an Land geübt haben." Ohne einen Nagel werden 96 Baumstämme verzurrt - im Wasser, sonst wäre das Holz zu schwer. Mindestens zwei Erwachsene sind nötig, um ein Floß zu bauen, einer allein packt das nicht. Nach drei Stunden ist es geschafft: Das Urlaubsparadies der Bengtsons - es misst übrigens 6 mal 3 Meter und wiegt 2 Tonnen - treibt am Ufer. Noch schnell das Sonnenzelt befestigen, darunter Vorratskasten, Frischwassertank, Chemie-Klo, Küchenausrüstung, Zelt, Rettungsring, Schwimmwesten und das Paddel zum Steuern und Manövrieren verstauen - und ab geht's.</div>
+      </div>
+      <!-- Question 4 -->
+      <div class="question-box" data-correct="Jugendliche arbeiten für Jugendliche">
+          <div class="email-fields">
+            <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          </div>
+          <div class="question-text">Von 9 bis 15 Uhr arbeitet Sebastian Keller (18) in einem Altenwohnheim in Hamburg-Altona: Er kümmert sich um die Essensausgabe, putzt die Küche und dann ist noch Zeit, um den Senioren vorzulesen oder mit ihnen Karten zu spielen. Zur selben Zeit putzen Rebecca (12) und Christiane (13) den Eingang des Hamburger „Michels", der wohl bekanntesten Kirche der Stadt, und Friderike (17) füttert schon frühmorgens Kühe, Schweine und Hühner auf einem Bio-Bauernhof bei Wedel. „Endlich mal ein sinnvoller Job", sagen die fünf übereinstimmend. Sie stehen stellvertretend für etwa 100.000 Jugendliche, die beim „Sozialen Tag" mitgemacht haben. Hut ab! Und was mindestens ebenso beeindruckend ist: Der Verein „Hamburgs Schüler helfen" (HSH) wurde von Jugendlichen im Jahr 2004 gegründet - und seitdem findet jedes Jahr im August der „Soziale Tag" statt. Mit Behörden und Firmen haben Schüler aus Hamburg Verträge für einen Tag abgeschlossen. Die Schülerinnen und Schüler verdienen dann am „Sozialen Tag" zwischen 6 und 8 Euro pro Stunde - aber nicht für sich selbst, sondern für andere. Denn der Verdienst wird gespendet. Die Jugendlichen wählen selbst ein Projekt aus, an das sie die Gelder spenden wollen. Einzige Bedingung: Es muss ein Projekt sein, von dem Jugendliche profitieren. Im letzten Jahr zum Beispiel wurde die Gesamtsumme von 1,2 Millionen Euro an das Projekt „Frieden für alle" gespendet. Dessen Ziel ist es, Jugendliche in Kriegs- und Krisenregionen zu unterstützen, den Dialog unter Jugendlichen aus verschiedenen Ländern zu fördern und auch das Kennenlernen anderer Kulturen zu ermöglichen. Für Ralf Waldner (20) vom HSH steht fest: „Wir können und werden anderen auch in Zukunft helfen, das Engagement der Schülerinnen und Schüler in Hamburg ist in den letzten Jahren schließlich immer weiter gestiegen."</div>
+      </div>
+      <!-- Question 5 -->
+      <div class="question-box" data-correct="Wegen Niedrigwasser: vom Fluss auf die Straße">
+          <div class="email-fields">
+            <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          </div>
+          <div class="question-text">Die Windjacken waren schon eingepackt, die Koffer geschlossen. Thomas Meurer (64) und Wiebke Fuchs (62) aus Hannover freuten sich auf ihre Flusskreuzfahrt mit der „MS Eurostar" von Potsdam nach Prag. Stattliche 2500 Euro kostete die Reise pro Person, und beide hatten lange gespart, um sich das leisten zu können. Doch aus der Kreuzfahrt wurde eine Bustour. Meurer berichtet, was er erlebt hat: „Wir waren am Abend auf das Schiff gegangen und hatten unsere Kabinen bezogen. Am nächsten Morgen ging es los. Aber schon bald machte das Schiff wieder fest und alle Gäste mussten von Bord." Wiebke Fuchs ergänzt: „Der Fluss hatte einfach zu wenig Wasser, da konnten wir mit dem großen Kreuzfahrtschiff nicht weiterfahren!" Per Bus ging es nach Prag. Beide wollen nun einen Teil des Reisepreises zurück, aber der Veranstalter Hapag-Lloyd wehrt ab: „Das war höhere Gewalt, da kann man nichts machen."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-column">
+    <div class="right-column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="draggable" draggable="true" id="a1" ondragstart="drag(event)">Am Strand im Dienst - mehr Sicherheit für Urlauber</div>
+      <div class="draggable" draggable="true" id="a2" ondragstart="drag(event)">Bäder, Seen und Natur - im hessischen Paradies</div>
+      <div class="draggable" draggable="true" id="a3" ondragstart="drag(event)">Freiheit und Natur - nach sechs Wochen harter Arbeit</div>
+      <div class="draggable" draggable="true" id="a4" ondragstart="drag(event)">Jugendliche arbeiten für Jugendliche</div>
+      <div class="draggable" draggable="true" id="a5" ondragstart="drag(event)">Kinderarbeit in Deutschland: Jugendliche werden zur Arbeit gezwungen</div>
+      <div class="draggable" draggable="true" id="a6" ondragstart="drag(event)">Nach harter Arbeit durch nordische Gewässer</div>
+      <div class="draggable" draggable="true" id="a7" ondragstart="drag(event)">Schaden an Kreuzfahrtschiff verhindert Weiterfahrt</div>
+      <div class="draggable" draggable="true" id="a8" ondragstart="drag(event)">Urlaub an deutschen Seen immer gefährlicher</div>
+      <div class="draggable" draggable="true" id="a9" ondragstart="drag(event)">Wegen Niedrigwasser: vom Fluss auf die Straße</div>
+      <div class="draggable" draggable="true" id="a10" ondragstart="drag(event)">Zu Gast bei den Fürsten</div>
+    </div>
+  </div>
+</div>
+
+<div class="button-container">
+  <button onclick="submitQuiz()" class="quiz-button">
+    <i class="fas fa-paper-plane"></i> Abschicken
+  </button>
+  <button onclick="resetQuiz()" class="quiz-button secondary">
+      <i class="fas fa-redo"></i> Zurücksetzen
+  </button>
+  <a href="../indexb2.html" class="quiz-button-link secondary"> <!-- Replace # with your actual home link -->
+    <i class="fas fa-home"></i> Zurück zur Startseite
+  </a>
+</div>
+
+<div id="result"></div>
+
+<button class="show-answers-btn" onclick="toggleAnswers()">💡 Lösungen anzeigen</button>
+
+<div class="answers-section" id="answersSection">
+  <h3>✅ Lösungen</h3>
+  <table class="answers-table">
+    <tr><td>Text 1</td><td>B</td><td>Bäder, Seen und Natur - im hessischen Paradies</td></tr>
+    <tr><td>Text 2</td><td>A</td><td>Am Strand im Dienst - mehr Sicherheit für Urlauber</td></tr>
+    <tr><td>Text 3</td><td>F</td><td>Nach harter Arbeit durch nordische Gewässer</td></tr>
+    <tr><td>Text 4</td><td>D</td><td>Jugendliche arbeiten für Jugendliche</td></tr>
+    <tr><td>Text 5</td><td>I</td><td>Wegen Niedrigwasser: vom Fluss auf die Straße</td></tr>
+  </table>
+</div>
+
+
+<script>
+  const rightColumnContent = document.querySelector(".right-column .right-column-content");
+  const originalAnswerOrder = Array.from(rightColumnContent.querySelectorAll('.draggable'));
+  let selectedDraggable = null; // To store the currently click-selected draggable item
+
+  // --- CLICK-TO-DROP/PICKUP LOGIC ---
+  function selectItem(item) {
+    if (selectedDraggable) {
+      selectedDraggable.classList.remove('selected');
+    }
+    selectedDraggable = item;
+    if (selectedDraggable) {
+      selectedDraggable.classList.add('selected');
+    }
+  }
+
+  function deselectItem() {
+    if (selectedDraggable) {
+      selectedDraggable.classList.remove('selected');
+      selectedDraggable = null;
+    }
+  }
+
+  function handleDraggableClicked(event) {
+    const clickedItem = event.currentTarget;
+    event.stopPropagation(); // Prevent click bubbling to parent elements like answer pool
+
+    if (selectedDraggable === clickedItem) { // Clicking the already selected item
+      deselectItem();
+      // If it was in a target and now deselected by clicking it, move it back to pool
+      if (clickedItem.parentElement.classList.contains('drop-target')) {
+           const parentDropTarget = clickedItem.parentElement;
+           rightColumnContent.appendChild(clickedItem);
+           updateDropTargetVisualState(parentDropTarget);
+           parentDropTarget.classList.remove('correct', 'incorrect'); // Clear feedback
+      }
+    } else { // Clicking a new item, or an unselected item in a target
+      // If the clicked item is currently in a drop target, "pick it up" by moving to pool first
+      if (clickedItem.parentElement.classList.contains('drop-target')) {
+          const parentDropTarget = clickedItem.parentElement;
+          rightColumnContent.appendChild(clickedItem); // Move to pool
+          updateDropTargetVisualState(parentDropTarget);
+          parentDropTarget.classList.remove('correct', 'incorrect'); // Clear feedback
+      }
+      selectItem(clickedItem); // Then select it (it's now in the pool)
+    }
+  }
+
+  function handleDropTargetClicked(event) {
+    const clickedDropTarget = event.currentTarget;
+    event.stopPropagation();
+
+    if (selectedDraggable) { // If an item is selected, try to place it here
+      const existingItemInTarget = clickedDropTarget.querySelector('.draggable');
+      if (existingItemInTarget && existingItemInTarget !== selectedDraggable) {
+        rightColumnContent.appendChild(existingItemInTarget); // Move old item from target back to pool
+        // No need to deselect existingItemInTarget here, as it wasn't the 'selectedDraggable'
+      }
+
+      clickedDropTarget.innerHTML = ''; // Clear target (removes placeholder or old item)
+      clickedDropTarget.appendChild(selectedDraggable); // Place new item
+      updateDropTargetVisualState(clickedDropTarget);
+      clickedDropTarget.classList.remove('correct', 'incorrect'); // Clear any feedback
+      deselectItem(); // Item is placed, so deselect
+    } else if (!selectedDraggable && clickedDropTarget.querySelector('.draggable')) {
+      // No item is selected, AND the clicked drop target HAS an item: "pick up" that item.
+      const itemToPickUp = clickedDropTarget.querySelector('.draggable');
+      rightColumnContent.appendChild(itemToPickUp); // Move it to the pool
+      updateDropTargetVisualState(clickedDropTarget);
+      clickedDropTarget.classList.remove('correct', 'incorrect'); // Clear feedback
+      selectItem(itemToPickUp); // And select it (it's now in the pool)
+    }
+  }
+
+  function handleAnswerPoolClicked(event) {
+    // If click is on the pool itself (not a draggable within it) and an item is selected
+    if (event.target === rightColumnContent && selectedDraggable) {
+      // If selected item is somehow not in pool (e.g. if logic changes), ensure it is
+      if (selectedDraggable.parentElement !== rightColumnContent) {
+           rightColumnContent.appendChild(selectedDraggable);
+      }
+      // The main purpose here: clicking the pool with a selected item deselects it.
+      deselectItem();
+    }
+  }
+
+  function initializeClickInteractions() {
+    document.querySelectorAll('.draggable').forEach(item => {
+      item.addEventListener('click', handleDraggableClicked);
+    });
+    document.querySelectorAll('.drop-target').forEach(target => {
+      target.addEventListener('click', handleDropTargetClicked);
+    });
+    rightColumnContent.addEventListener('click', handleAnswerPoolClicked);
+  }
+
+  // --- DRAG AND DROP LOGIC (MODIFIED) ---
+  function allowDrop(ev) {
+    ev.preventDefault();
+    let potentialDropTarget = ev.target;
+    while(potentialDropTarget && !potentialDropTarget.classList.contains('drop-target') && !potentialDropTarget.classList.contains('right-column-content')) {
+        potentialDropTarget = potentialDropTarget.parentElement;
+    }
+    if (potentialDropTarget && potentialDropTarget.classList.contains('drop-target')) {
+        potentialDropTarget.classList.add("drag-over");
+    }
+  }
+
+  document.addEventListener('dragleave', function(event) {
+    if (event.target.classList && event.target.classList.contains("drop-target")) {
+      event.target.classList.remove("drag-over");
+    }
+  }, false);
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    ev.target.classList.add("dragging");
+    deselectItem(); // Deselect any click-selected item when a drag operation starts
+  }
+
+  document.addEventListener('dragend', function(event) {
+    if (event.target.classList && event.target.classList.contains('draggable')) {
+      event.target.classList.remove('dragging');
+    }
+    document.querySelectorAll('.drop-target.drag-over').forEach(dt => dt.classList.remove('drag-over'));
+  });
+
+  function drop(ev) {
+    ev.preventDefault();
+    const draggedId = ev.dataTransfer.getData("text");
+    const draggedEl = document.getElementById(draggedId);
+    let dropTargetEl = ev.target;
+
+    if (!draggedEl) return; // Safety check
+
+    draggedEl.classList.remove("dragging");
+    document.querySelectorAll('.drop-target.drag-over').forEach(dt => dt.classList.remove('drag-over'));
+
+    while (dropTargetEl &&
+           !dropTargetEl.classList.contains("drop-target") &&
+           !dropTargetEl.classList.contains("right-column-content")) {
+      dropTargetEl = dropTargetEl.parentElement;
+    }
+
+    if (!dropTargetEl) return;
+
+    if (dropTargetEl.classList.contains("drop-target")) {
+      const currentAnswer = dropTargetEl.querySelector(".draggable");
+      if (currentAnswer && currentAnswer !== draggedEl) {
+        rightColumnContent.appendChild(currentAnswer);
+        currentAnswer.classList.remove('selected'); // Ensure item moved back is not selected
+      }
+      dropTargetEl.innerHTML = "";
+      dropTargetEl.appendChild(draggedEl);
+      dropTargetEl.classList.remove("correct", "incorrect");
+      updateDropTargetVisualState(dropTargetEl);
+    }
+    else if (dropTargetEl.classList.contains("right-column-content")) {
+      const originalParent = draggedEl.parentElement; // Get parent BEFORE moving
+      rightColumnContent.appendChild(draggedEl);
+      if (originalParent && originalParent.classList.contains('drop-target')) {
+          updateDropTargetVisualState(originalParent); // Update visual state of original drop target
+          originalParent.classList.remove('correct', 'incorrect');
+      }
+    }
+    deselectItem(); // Deselect any click-selected item after a drop operation
+  }
+
+  function updateDropTargetVisualState(dropTarget) {
+    if (!dropTarget || !dropTarget.classList.contains('drop-target')) return;
+    if (dropTarget.querySelector(".draggable")) {
+      dropTarget.classList.remove("empty-drop-target");
+    } else {
+      dropTarget.classList.add("empty-drop-target");
+    }
+  }
+
+  // --- QUIZ FUNCTIONALITY (MODIFIED RESET) ---
+
+  function toggleAnswers() {
+    const section = document.getElementById('answersSection');
+    const btn = document.querySelector('.show-answers-btn');
+    if (section.style.display === 'block') {
+      section.style.display = 'none';
+      btn.textContent = '💡 Lösungen anzeigen';
+    } else {
+      section.style.display = 'block';
+      btn.textContent = '🙈 Lösungen verbergen';
+      section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+  function submitQuiz() {
+    let total = 0;
+    let correct = 0;
+    deselectItem(); // Ensure nothing is selected when submitting
+
+    document.querySelectorAll('.question-box').forEach((box) => {
+      total++;
+      const correctAnswer = box.getAttribute("data-correct").trim();
+      const dropTarget = box.querySelector(".drop-target");
+      const droppedDraggable = dropTarget.querySelector(".draggable");
+      dropTarget.classList.remove("correct", "incorrect");
+      if (droppedDraggable) {
+        const selectedText = droppedDraggable.textContent.trim();
+        if (selectedText === correctAnswer) {
+          dropTarget.classList.add("correct");
+          correct++;
+        } else {
+          dropTarget.classList.add("incorrect");
+        }
+      } else {
+        dropTarget.classList.add("incorrect");
+      }
+    });
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML =
+      `Du hast <span class="correct-count">${correct}</span> von <span class="total-count">${total}</span> Fragen richtig beantwortet.`;
+  }
+
+  function resetQuiz() {
+    deselectItem(); // Clear any click-selection first
+
+    document.querySelectorAll('.drop-target').forEach(dt => {
+        const draggable = dt.querySelector('.draggable');
+        if (draggable) {
+            rightColumnContent.appendChild(draggable);
+            draggable.classList.remove('selected'); // Make sure it's not selected style
+        }
+        dt.innerHTML = '';
+        dt.classList.remove('correct', 'incorrect');
+        updateDropTargetVisualState(dt);
+    });
+
+    rightColumnContent.innerHTML = '';
+    originalAnswerOrder.forEach(draggable => {
+        rightColumnContent.appendChild(draggable);
+        draggable.classList.remove('dragging'); // Just in case
+        draggable.classList.remove('selected'); // Ensure no selected style
+    });
+
+    document.getElementById("result").innerHTML = "";
+    document.querySelectorAll('.drop-target').forEach(updateDropTargetVisualState);
+  }
+
+  // --- INITIALIZATION ---
+  document.querySelectorAll('.drop-target').forEach(updateDropTargetVisualState);
+  initializeClickInteractions(); // Add this line to set up click listeners
+
+</script>
+
+
+
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from deuropa.app/quiz/fische by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesen Teil 1 - Fische</title>
+<link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #a78bfa;
+      --danger-color: #ef4444;
+      --light-bg: #ecf0f1;
+      --dark-text: #2c3e50;
+      --light-text: #ffffff;
+      --border-radius: 10px;
+      --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      --box-shadow-hover: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; margin: 0; padding: 10px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: var(--dark-text);
+      animation: fadeInPage 0.8s ease-out; min-height: 100vh;
+    }
+    @media (min-width: 600px) { body { padding: 15px; } }
+    @media (min-width: 992px) { body { padding: 20px; } }
+    @keyframes fadeInPage { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+    .main-header {
+      background-color: var(--primary-color); color: var(--light-text); padding: 12px 15px;
+      font-size: 20px; margin-bottom: 20px; border-radius: var(--border-radius);
+      text-align: center; font-weight: 600; box-shadow: var(--box-shadow); letter-spacing: 0.5px;
+    }
+    @media (min-width: 768px) { .main-header { padding: 20px 25px; font-size: 26px; margin-bottom: 25px; } }
+    .container { display: flex; flex-direction: row; justify-content: space-between; gap: 15px; }
+    @media(min-width: 992px) { .container { gap: 20px; } }
+    .left-column { width: 58%; flex-shrink: 0; }
+    .right-column { width: 38%; flex-shrink: 0; }
+    .quiz-scroll-container, .right-column-content {
+      background-color: var(--light-text); border-radius: var(--border-radius); padding: 10px;
+      box-shadow: var(--box-shadow); max-height: 75vh; overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: thin; scrollbar-color: var(--primary-color) var(--light-bg);
+    }
+    @media (min-width: 992px) { .quiz-scroll-container, .right-column-content { padding: 15px; max-height: 70vh; } }
+    .quiz-scroll-container::-webkit-scrollbar, .right-column-content::-webkit-scrollbar { width: 6px; }
+    @media (min-width: 992px) { .quiz-scroll-container::-webkit-scrollbar, .right-column-content::-webkit-scrollbar { width: 8px; } }
+    .quiz-scroll-container::-webkit-scrollbar-track, .right-column-content::-webkit-scrollbar-track { background: var(--light-bg); border-radius: var(--border-radius); }
+    .quiz-scroll-container::-webkit-scrollbar-thumb, .right-column-content::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: var(--border-radius); border: 2px solid var(--light-bg); }
+    .question-box {
+      border: 1px solid #bdc3c7; border-left: 4px solid var(--primary-color); border-radius: var(--border-radius);
+      margin-bottom: 15px; padding: 10px; background-color: #fdfdfd;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      display: flex; flex-direction: column; min-height: 120px;
+    }
+    @media (min-width: 992px) { .question-box { border-left-width: 5px; margin-bottom: 20px; padding: 15px; min-height: 150px; } }
+    .question-box:hover { transform: translateY(-3px); box-shadow: var(--box-shadow-hover); }
+    .email-fields { margin-bottom: 8px; }
+    @media (min-width: 992px) { .email-fields { margin-bottom: 10px; } }
+    .drop-target {
+      background-color: #f9f9f9; padding: 10px; border: 2px dashed #cccccc; min-height: 40px;
+      border-radius: 6px; text-align: center; transition: background-color 0.3s, border-color 0.3s;
+      display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; /* Added cursor */
+    }
+    @media (min-width: 992px) { .drop-target { padding: 12px; min-height: 45px; border-radius: 8px; } }
+    .drop-target.empty-drop-target::before { content: "Drop here"; color: #aaa; font-style: italic; font-size: 0.8em; }
+    @media (min-width: 992px) { .drop-target.empty-drop-target::before { content: "Antwort hier ablegen"; font-size: 0.9em; } }
+    .drop-target:not(.empty-drop-target)::before { content: ""; }
+    .drop-target:hover, .drop-target.drag-over { background-color: #f5f3ff; border-color: var(--primary-color); }
+    .question-text { font-size: 0.8em; color: #555; line-height: 1.5; overflow-y: auto; max-height: 200px; padding-right: 5px; }
+    @media (min-width: 992px) { .question-text { font-size: 0.9em; line-height: 1.6; max-height: 300px; } }
+    .draggable {
+      background-color: #e0e0e0; color: var(--dark-text); margin: 8px 0; padding: 8px 10px;
+      border-radius: 6px; cursor: grab; display: flex; align-items: center; justify-content: center;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s, outline 0.2s;
+      user-select: none; font-size: 0.85em; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center; word-break: break-word;
+    }
+    @media (min-width: 992px) { .draggable { margin: 10px 0; padding: 12px 15px; border-radius: 8px; font-size: 0.95em; } }
+    .draggable:hover { background-color: #d0d0d0; transform: scale(1.02); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .draggable.dragging { opacity: 0.6; transform: scale(0.95); box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: grabbing; }
+
+    /* NEW CSS for selected draggable */
+    .draggable.selected {
+      outline: 3px solid var(--primary-color);
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+      background-color: #e9d5ff;
+    }
+    .draggable.selected:hover {
+        background-color: #ddd6fe;
+        transform: scale(1.03);
+    }
+
+    .drop-target.correct { background-color: #f3e8ff !important; border: 2px solid var(--secondary-color) !important; }
+    .drop-target.correct::after {
+      content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--secondary-color);
+      position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 1em;
+    }
+    @media (min-width: 992px) { .drop-target.correct::after { right: 10px; font-size: 1.2em; } }
+    .drop-target.incorrect { background-color: #fee2e2 !important; border: 2px solid var(--danger-color) !important; }
+    .drop-target.incorrect::after {
+      content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--danger-color);
+      position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 1em;
+    }
+    @media (min-width: 992px) { .drop-target.incorrect::after { right: 10px; font-size: 1.2em; } }
+    .drop-target .draggable { background-color: var(--primary-color); color: var(--light-text); width: calc(100% - 25px); padding-right: 0; margin: 0; }
+    @media (min-width: 992px) { .drop-target .draggable { width: calc(100% - 40px); } }
+    .drop-target.correct .draggable { background-color: var(--secondary-color) !important; }
+    .drop-target.incorrect .draggable { background-color: var(--danger-color) !important; }
+    .button-container { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    @media (min-width: 992px) { .button-container { margin-top: 25px; gap: 15px; } }
+    .quiz-button, .quiz-button-link {
+      padding: 10px 20px; border: none; background-color: var(--primary-color); color: white !important;
+      font-size: 14px; font-weight: 500; border-radius: var(--border-radius); cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: var(--box-shadow); text-decoration: none;
+    }
+    @media (min-width: 992px) { .quiz-button, .quiz-button-link { padding: 12px 25px; font-size: 16px; } }
+    .quiz-button:hover, .quiz-button-link:hover { background-color: #5568d3; transform: translateY(-2px); box-shadow: var(--box-shadow-hover); color: white !important; }
+    .quiz-button:active, .quiz-button-link:active { transform: translateY(0px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .quiz-button.secondary, .quiz-button-link.secondary { background-color: #8b5cf6; }
+    .quiz-button.secondary:hover, .quiz-button-link.secondary:hover { background-color: #7c3aed; }
+    #result {
+      text-align: center; margin-top: 20px; padding: 12px; font-size: 1em; font-weight: 500;
+      background-color: var(--light-text); border-radius: var(--border-radius); box-shadow: var(--box-shadow);
+    }
+    @media (min-width: 992px) { #result { margin-top: 25px; padding: 15px; font-size: 1.1em; } }
+    #result .correct-count { color: var(--secondary-color); }
+    #result .total-count { color: var(--primary-color); }
+
+    #warningBox {
+  display: none;
+  position: fixed;
+  top: 20px;                  
+  left: 50%;                  
+  transform: translateX(-50%);
+  background: #f81d1d;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 9999;
+}
+  </style>
+</head>
+<body>
+
+<div class="main-header">Lesen Teil 1 - Fische</div>
+
+<div class="container">
+  <div class="left-column">
+    <div class="quiz-scroll-container">
+
+      <!-- Question 1 -->
+      <div class="question-box" data-correct="Extremer lebensraum.">
+        <div class="email-fields">
+          <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="question-text">Willkommen in der Wüste. Die Sonne brennt gnadenlos. Endlose Weite. Nur Sand und
+Geröll, so weit das Auge reicht. Kein Baum, kein Strauch, kein noch so winziges Tier.
+Bilder wie diese kommen wohl den meisten in den Sinn, wenn sie an die Wüste denken. Doch diese Vorstellung stimmt nicht ganz. Denn so hart und lebensfeindlich
+die Bedingungen in der Wüste auch sind – es gibt einige Überlebenskünstler, die es
+selbst hier schaffen zu existieren. Um in der Wüste zu überleben, mussten sie sich im
+Laufe der Jahrmillionen perfekt an die harten Lebensbedingungen anpassen. Sie wurden zu ausgesprochenen
+Spezialisten, von denen Wissenschaftler jede Menge lernen können.
+Und so zieht es jedes Jahr Bioniker aus vielen Ländern der Erde in die entlegenen
+Wüsten der Welt – auf der Suche nach kleinen, aber wirksamen Tricks für das Leben in
+einer extremen Umgebung.</div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question-box" data-correct="auf der suche nach verborggenen details.">
+        <div class="email-fields">
+          <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="question-text">Denn Bioniker entwickeln technische Anlagen nach dem Vorbild der Natur – der Begriff
+Bionik setzt sich zusammen aus den Wörtern „Biologie" und „Technik". Ihre Aufgabe:
+die Pflanzen und Tiere erst genau beobachten, kleinste Details entdecken und deren
+Geheimnisse lüften. Warum kann ein Gecko an der Wand hochlaufen?
+Wie kann ein Kolibri rückwärts fliegen?
+Wenn die Bioniker die Abläufe verstanden haben, fängt der größte Teil
+ihrer Arbeit erst an. Dann versuchen sie, aus dem Gelernten eine technische
+Anwendung zu entwickeln. Auch die besonderen Eigenschaften von
+Wüstentieren eignen sich dafür, wie die folgenden Beispiele zeigen.</div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question-box" data-correct="ein fisch in den dunen.">
+        <div class="email-fields">
+          <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="question-text">Der Sandfisch ist eigentlich gar kein Fisch, sondern eine kleine Echse. Doch seinen Namen hat er sich
+redlich verdient. Denn er kann ausgezeichnet schwimmen – zwar nicht im Wasser, dafür aber umso besser
+im Sand der Sahara. Droht dem wenige Zentimeter großen Tier Gefahr, dann verschwindet es rasend
+schnell im Wüstensand, nur um Augenblicke später einige Meter entfernt wieder aufzutauchen. Was im
+Wasser jedes Kind beherrscht, scheint im Sand unmöglich – doch nicht für den Sandfisch. Denn er hat ein
+winziges Geheimnis: Seine Haut erscheint nur auf dem ersten Blick ganz glatt. Unter dem Mikroskop
+fanden Wissenschaftler der Technischen Universität (TU) Berlin winzige Grate auf seiner Haut, nur wenige
+Nanometer groß. Genau diese Grate verhindern, dass der Sand an der Haut des Sandfisches hängen bleibt.
+Die Forscher konnten es kaum glauben und bauten in ihrem Labor eine Oberfläche mit vergleichbarer Struktur nach.
+Und siehe da: an einer vollkommen glatten Oberfläche bleibt der Sand förmlich kleben, an der mit den kleinen Erhebungen findet er keinen Halt.</div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question-box" data-correct="trinkwasser aus nebel.">
+        <div class="email-fields">
+          <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="question-text">Das größte Problem aller Wüstenbewohner ist die Wasserbeschaffung. In allen Wüsten
+der Erde herrscht fast ständig akuter Wassermangel. In vielen fällt jahrelang kein einziger
+Regentropfen vom Himmel. In einigen Regionen der Atacama-Wüste in Südamerika soll
+es seit mehreren hundert Jahren keinen Niederschlag mehr gegeben haben. Der
+Nebeltrinker-Käfer hat seine ganz eigene Strategie gegen den Wassermangel entwickelt.
+Er lebt in der Namib-Wüste im Südwesten Afrikas. Viele Tage im Jahr krabbelt er emsig
+die Sanddünen hinauf, macht eine Art Kopfstand und wartet auf den Nebel, der vom
+Atlantik her über den Rand der Wüste zieht. Dabei senkt er den Kopf und hebt sein
+Hinterteil in die Höhe. Die Flüssigkeit des Nebels kondensiert an seinem nur anderthalb
+Zentimeter langen Körper und läuft über eine kleine Vertiefung auf seinem Rücken direkt in sein Maul.
+Hier liegt die technische Anwendung auf der Hand: Wassergewinnung aus Nebel. Tatsächlich wird diese Methode
+bereits genutzt: In der Nähe des Dorfes El Tofo in Chile wurden sogenannte Nebelnetze errichtet.
+Pro Nebeltag kondensieren hier bis zu 11.000 Liter frisches Wasser an den Netzen.</div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question-box" data-correct="rasante flucht.">
+        <div class="email-fields">
+          <div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="question-text">Beispiel Nummer drei: die Räderspinne. Auch sie lebt in der Wüste Namib und wurde erst vor
+wenigen Jahren entdeckt. Die Wissenschaftler waren ziemlich verblüfft, als sie die
+ungewöhnliche Fluchtmethode des Achtbeiners sahen – einfach die Beine anwinkeln und dann
+wie ein Rad die Sanddünen hinunterrollen. Die Bioniker filmten die Spinne mehrmals und
+schauten sich das Video unzählige Male an. Dann war ihnen klar: Mit ihren Vorderbeinen
+stößt sich die Spinne während des Rollens immer wieder vom Boden ab. Dadurch kullert sie
+nicht einfach nur passiv den Abhang hinunter – vielmehr kann sie durch diese Methode auf
+ihrer Flucht wieder ordentlich an Tempo zulegen. Doch welche technische Anwendung soll
+dabei herausspringen? Hier beweisen die Forscher Mut zur Vision: An der TU Berlin soll ein
+Mars-Auto entstehen, das im unwegsamen Gelände rollen und in besserem Gelände normal fahren kann.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="right-column">
+    <div class="right-column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="draggable" draggable="true" id="a1" ondragstart="drag(event)">Das geheimnis des schnellen schwimmens.</div>
+      <div class="draggable" draggable="true" id="a2" ondragstart="drag(event)">Extremer lebensraum.</div>
+      <div class="draggable" draggable="true" id="a3" ondragstart="drag(event)">fische im focus der forscher von der thechnischen universitat in berlin.</div>
+      <div class="draggable" draggable="true" id="a4" ondragstart="drag(event)">wie wird Technik in der natur eingesetzt.</div>
+      <div class="draggable" draggable="true" id="a5" ondragstart="drag(event)">bioniker erforschen die wusrennatur.</div>
+      <div class="draggable" draggable="true" id="a6" ondragstart="drag(event)">ein fisch in den dunen.</div>
+      <div class="draggable" draggable="true" id="a7" ondragstart="drag(event)">die ursachen fur den wassermangel.</div>
+      <div class="draggable" draggable="true" id="a8" ondragstart="drag(event)">rasante flucht.</div>
+      <div class="draggable" draggable="true" id="a9" ondragstart="drag(event)">trinkwasser aus nebel.</div>
+      <div class="draggable" draggable="true" id="a10" ondragstart="drag(event)">auf der suche nach verborggenen details.</div>
+    </div>
+  </div>
+</div>
+
+<div class="button-container">
+  <button onclick="submitQuiz()" class="quiz-button">
+    <i class="fas fa-paper-plane"></i> Abschicken
+  </button>
+  <button onclick="resetQuiz()" class="quiz-button secondary">
+    <i class="fas fa-redo"></i> Zurücksetzen
+  </button>
+  <a href="../indexb2.html" class="quiz-button-link secondary">
+    <i class="fas fa-home"></i> Zurück zur Startseite
+  </a>
+</div>
+
+<div id="result"></div>
+
+<div id="warningBox">
+  ⚠️ Sitzung läuft in <span id="countdown">30</span> Sekunden ab!
+</div>
+
+<script>
+  const rightColumnContent = document.querySelector(".right-column .right-column-content");
+  const originalAnswerOrder = Array.from(rightColumnContent.querySelectorAll('.draggable'));
+  let selectedDraggable = null; // To store the currently click-selected draggable item
+
+  // --- CLICK-TO-DROP/PICKUP LOGIC ---
+  function selectItem(item) {
+    if (selectedDraggable) {
+      selectedDraggable.classList.remove('selected');
+    }
+    selectedDraggable = item;
+    if (selectedDraggable) {
+      selectedDraggable.classList.add('selected');
+    }
+  }
+
+  function deselectItem() {
+    if (selectedDraggable) {
+      selectedDraggable.classList.remove('selected');
+      selectedDraggable = null;
+    }
+  }
+
+  function handleDraggableClicked(event) {
+    const clickedItem = event.currentTarget;
+    event.stopPropagation(); // Prevent click bubbling to parent elements like answer pool
+
+    if (selectedDraggable === clickedItem) { // Clicking the already selected item
+      deselectItem();
+      // If it was in a target and now deselected by clicking it, move it back to pool
+      if (clickedItem.parentElement.classList.contains('drop-target')) {
+           const parentDropTarget = clickedItem.parentElement;
+           rightColumnContent.appendChild(clickedItem);
+           updateDropTargetVisualState(parentDropTarget);
+           parentDropTarget.classList.remove('correct', 'incorrect'); // Clear feedback
+      }
+    } else { // Clicking a new item, or an unselected item in a target
+      // If the clicked item is currently in a drop target, "pick it up" by moving to pool first
+      if (clickedItem.parentElement.classList.contains('drop-target')) {
+          const parentDropTarget = clickedItem.parentElement;
+          rightColumnContent.appendChild(clickedItem); // Move to pool
+          updateDropTargetVisualState(parentDropTarget);
+          parentDropTarget.classList.remove('correct', 'incorrect'); // Clear feedback
+      }
+      selectItem(clickedItem); // Then select it (it's now in the pool)
+    }
+  }
+
+  function handleDropTargetClicked(event) {
+    const clickedDropTarget = event.currentTarget;
+    event.stopPropagation();
+
+    if (selectedDraggable) { // If an item is selected, try to place it here
+      const existingItemInTarget = clickedDropTarget.querySelector('.draggable');
+      if (existingItemInTarget && existingItemInTarget !== selectedDraggable) {
+        rightColumnContent.appendChild(existingItemInTarget); // Move old item from target back to pool
+        // No need to deselect existingItemInTarget here, as it wasn't the 'selectedDraggable'
+      }
+
+      clickedDropTarget.innerHTML = ''; // Clear target (removes placeholder or old item)
+      clickedDropTarget.appendChild(selectedDraggable); // Place new item
+      updateDropTargetVisualState(clickedDropTarget);
+      clickedDropTarget.classList.remove('correct', 'incorrect'); // Clear any feedback
+      deselectItem(); // Item is placed, so deselect
+    } else if (!selectedDraggable && clickedDropTarget.querySelector('.draggable')) {
+      // No item is selected, AND the clicked drop target HAS an item: "pick up" that item.
+      const itemToPickUp = clickedDropTarget.querySelector('.draggable');
+      rightColumnContent.appendChild(itemToPickUp); // Move it to the pool
+      updateDropTargetVisualState(clickedDropTarget);
+      clickedDropTarget.classList.remove('correct', 'incorrect'); // Clear feedback
+      selectItem(itemToPickUp); // And select it (it's now in the pool)
+    }
+  }
+
+  function handleAnswerPoolClicked(event) {
+    // If click is on the pool itself (not a draggable within it) and an item is selected
+    if (event.target === rightColumnContent && selectedDraggable) {
+      // If selected item is somehow not in pool (e.g. if logic changes), ensure it is
+      if (selectedDraggable.parentElement !== rightColumnContent) {
+           rightColumnContent.appendChild(selectedDraggable);
+      }
+      // The main purpose here: clicking the pool with a selected item deselects it.
+      deselectItem();
+    }
+  }
+
+  function initializeClickInteractions() {
+    document.querySelectorAll('.draggable').forEach(item => {
+      item.addEventListener('click', handleDraggableClicked);
+    });
+    document.querySelectorAll('.drop-target').forEach(target => {
+      target.addEventListener('click', handleDropTargetClicked);
+    });
+    rightColumnContent.addEventListener('click', handleAnswerPoolClicked);
+  }
+
+  // --- DRAG AND DROP LOGIC (MODIFIED) ---
+  function allowDrop(ev) {
+    ev.preventDefault();
+    let potentialDropTarget = ev.target;
+    while(potentialDropTarget && !potentialDropTarget.classList.contains('drop-target') && !potentialDropTarget.classList.contains('right-column-content')) {
+        potentialDropTarget = potentialDropTarget.parentElement;
+    }
+    if (potentialDropTarget && potentialDropTarget.classList.contains('drop-target')) {
+        potentialDropTarget.classList.add("drag-over");
+    }
+  }
+
+  document.addEventListener('dragleave', function(event) {
+    if (event.target.classList && event.target.classList.contains("drop-target")) {
+      event.target.classList.remove("drag-over");
+    }
+  }, false);
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    ev.target.classList.add("dragging");
+    deselectItem(); // Deselect any click-selected item when a drag operation starts
+  }
+
+  document.addEventListener('dragend', function(event) {
+    if (event.target.classList && event.target.classList.contains('draggable')) {
+      event.target.classList.remove('dragging');
+    }
+    document.querySelectorAll('.drop-target.drag-over').forEach(dt => dt.classList.remove('drag-over'));
+  });
+
+  function drop(ev) {
+    ev.preventDefault();
+    const draggedId = ev.dataTransfer.getData("text");
+    const draggedEl = document.getElementById(draggedId);
+    let dropTargetEl = ev.target;
+
+    if (!draggedEl) return; // Safety check
+
+    draggedEl.classList.remove("dragging");
+    document.querySelectorAll('.drop-target.drag-over').forEach(dt => dt.classList.remove('drag-over'));
+
+    while (dropTargetEl &&
+           !dropTargetEl.classList.contains("drop-target") &&
+           !dropTargetEl.classList.contains("right-column-content")) {
+      dropTargetEl = dropTargetEl.parentElement;
+    }
+
+    if (!dropTargetEl) return;
+
+    if (dropTargetEl.classList.contains("drop-target")) {
+      const currentAnswer = dropTargetEl.querySelector(".draggable");
+      if (currentAnswer && currentAnswer !== draggedEl) {
+        rightColumnContent.appendChild(currentAnswer);
+        currentAnswer.classList.remove('selected'); // Ensure item moved back is not selected
+      }
+      dropTargetEl.innerHTML = "";
+      dropTargetEl.appendChild(draggedEl);
+      dropTargetEl.classList.remove("correct", "incorrect");
+      updateDropTargetVisualState(dropTargetEl);
+    }
+    else if (dropTargetEl.classList.contains("right-column-content")) {
+      const originalParent = draggedEl.parentElement; // Get parent BEFORE moving
+      rightColumnContent.appendChild(draggedEl);
+      if (originalParent && originalParent.classList.contains('drop-target')) {
+          updateDropTargetVisualState(originalParent); // Update visual state of original drop target
+          originalParent.classList.remove('correct', 'incorrect');
+      }
+    }
+    deselectItem(); // Deselect any click-selected item after a drop operation
+  }
+
+  function updateDropTargetVisualState(dropTarget) {
+    if (!dropTarget || !dropTarget.classList.contains('drop-target')) return;
+    if (dropTarget.querySelector(".draggable")) {
+      dropTarget.classList.remove("empty-drop-target");
+    } else {
+      dropTarget.classList.add("empty-drop-target");
+    }
+  }
+
+  // --- QUIZ FUNCTIONALITY (MODIFIED RESET) ---
+  function submitQuiz() {
+    let total = 0;
+    let correct = 0;
+    deselectItem(); // Ensure nothing is selected when submitting
+
+    document.querySelectorAll('.question-box').forEach((box) => {
+      total++;
+      const correctAnswer = box.getAttribute("data-correct").trim();
+      const dropTarget = box.querySelector(".drop-target");
+      const droppedDraggable = dropTarget.querySelector(".draggable");
+      dropTarget.classList.remove("correct", "incorrect");
+      if (droppedDraggable) {
+        const selectedText = droppedDraggable.textContent.trim();
+        if (selectedText === correctAnswer) {
+          dropTarget.classList.add("correct");
+          correct++;
+        } else {
+          dropTarget.classList.add("incorrect");
+        }
+      } else {
+        dropTarget.classList.add("incorrect");
+      }
+    });
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML =
+      `Du hast <span class="correct-count">${correct}</span> von <span class="total-count">${total}</span> Fragen richtig beantwortet.`;
+  }
+
+  function resetQuiz() {
+    deselectItem(); // Clear any click-selection first
+
+    document.querySelectorAll('.drop-target').forEach(dt => {
+        const draggable = dt.querySelector('.draggable');
+        if (draggable) {
+            rightColumnContent.appendChild(draggable);
+            draggable.classList.remove('selected'); // Make sure it's not selected style
+        }
+        dt.innerHTML = '';
+        dt.classList.remove('correct', 'incorrect');
+        updateDropTargetVisualState(dt);
+    });
+
+    rightColumnContent.innerHTML = '';
+    originalAnswerOrder.forEach(draggable => {
+        rightColumnContent.appendChild(draggable);
+        draggable.classList.remove('dragging'); // Just in case
+        draggable.classList.remove('selected'); // Ensure no selected style
+    });
+
+    document.getElementById("result").innerHTML = "";
+    document.querySelectorAll('.drop-target').forEach(updateDropTargetVisualState);
+  }
+
+  // --- INITIALIZATION ---
+  document.querySelectorAll('.drop-target').forEach(updateDropTargetVisualState);
+  initializeClickInteractions(); // Add this line to set up click listeners
+
+</script>
+<script>
+let pingTimeout;
+let logoutTimer;
+let warningTimer;
+let countdownTimer;
+let lastPing = 0;
+
+const INACTIVITY_LIMIT = 15 * 60 * 1000; // 15 minutes
+const WARNING_BEFORE_LOGOUT = 30 * 1000; // 30 seconds
+const warningBox = document.getElementById("warningBox");
+const countdownEl = document.getElementById("countdown");
+
+function sendPing() {
+    const now = Date.now();
+    if (now - lastPing < 10000) return; 
+    lastPing = now;
+    fetch("/ping").catch(() => {});
+}
+
+function resetTimers() {
+    clearTimeout(pingTimeout);
+    clearTimeout(logoutTimer);
+    clearTimeout(warningTimer);
+    clearInterval(countdownTimer);
+
+    warningBox.style.display = "none"; // 🟡 hide warning if active again
+
+    sendPing();
+    pingTimeout = setTimeout(sendPing, 60 * 1000);
+
+    // Show warning 30s before logout
+    warningTimer = setTimeout(() => {
+        let remaining = 30;
+        warningBox.style.display = "block";
+        countdownEl.textContent = remaining;
+
+        countdownTimer = setInterval(() => {
+            remaining--;
+            countdownEl.textContent = remaining;
+            if (remaining <= 0) {
+                clearInterval(countdownTimer);
+            }
+        }, 1000);
+    }, INACTIVITY_LIMIT - WARNING_BEFORE_LOGOUT);
+
+    // Auto logout
+    logoutTimer = setTimeout(() => {
+        fetch("/logout", { method: "POST" })
+          .then(() => window.location.href = "../index.html");
+    }, INACTIVITY_LIMIT);
+}
+
+// Events
+["mousemove", "keydown", "scroll", "click", "touchstart"].forEach(evt => {
+    document.addEventListener(evt, resetTimers);
+});
+
+window.addEventListener("pageshow", sendPing);
+window.addEventListener("beforeunload", sendPing);
+
+resetTimers();
+</script>
+
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
+
+<!-- Mirrored from deuropa.app/quiz/fische by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:30 GMT -->
+</html>

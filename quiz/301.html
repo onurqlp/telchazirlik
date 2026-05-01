@@ -1,0 +1,344 @@
+<!DOCTYPE html><html>
+<!-- Mirrored from deuropa.app/quiz/301 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8">
+  <title>Frau Melchior – Dresden-Reise</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #e9eaec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .container {
+      display: flex;
+      max-width: 1400px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .letter {
+      flex: 2;
+      padding: 30px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .blank {
+      background-color: #3f6ccf;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      min-width: 24px;
+      text-align: center;
+      display: inline-block;
+    }
+    .choices {
+  flex: 1.5;
+  background-color: #f2f3f7;
+  padding: 30px 20px;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+    .question-block { margin-bottom: 20px; }
+    .row-container {
+      background-color: #e0e4f3;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 6px;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .option {
+      background-color: white;
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 18px;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s ease;
+      user-select: none;
+      text-align: center;
+      flex: 1;
+    }
+    .option:hover { background-color: #e6ebf9; }
+    .option.selected { background-color: #d0defc; border-color: #3f6ccf; font-weight: bold; }
+    .option.correct { background-color: #c8f7c5; border-color: #34a853; }
+    .option.incorrect { background-color: #fbd5d5; border-color: #e53935; }
+    input[type="radio"] { display: none; }
+    .button-wrapper {
+  max-width: 1400px;
+  margin: 30px auto 60px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+#checkBtn, #homeBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+#checkBtn { background-color: #3f6ccf; color: white; }
+#checkBtn:hover { background-color: #2f56b3; }
+#homeBtn { background-color: #7c3aed; color: white; display: inline-block; line-height: 1.6; }
+#homeBtn:hover { background-color: #5a6268; }
+#resetBtn {
+  background-color: #7c3aed;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+#resetBtn:hover { background-color: #5a6268; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="letter">
+
+    <p><strong>Sehr geehrte Frau Melchior,</strong></p>
+
+    <p>vielen Dank für Ihr Schreiben von letztem Dienstag,
+    <span class="blank" id="blank1">1</span>
+    Sie um nähere Informationen zu der geplanten Dresden-Reise im kommenden Juni gebeten haben.
+    <span class="blank" id="blank2">2</span>
+    unser Programmheft erst in zwei Wochen fertig ist, gebe ich Ihnen schon einmal ein paar Vorabinformationen.</p>
+
+    <p>Die Reise findet in der Zeit vom 3. bis 8. Juni statt. Die Anreise erfolgt mit der Bahn.
+    <span class="blank" id="blank3">3</span>
+    sind Sie im Hotel Corona, das
+    <span class="blank" id="blank4">4</span>
+    in der Stadtmitte befindet. Ihnen stehen Einzel- oder Doppelzimmer mit Bad zur Verfügung. Der Reisepreis beträgt 650 € im Doppel- sowie 950 € im Einzelzimmer, jeweils mit Frühstück.</p>
+
+    <p>Das eigentliche Programm der Reise startet am 4. Juni mit einer Stadtrundfahrt, in deren Verlauf Ihnen alle wichtigen Sehenswürdigkeiten
+    <span class="blank" id="blank5">5</span>
+    werden. Am Nachmittag werden Sie den Zwinger mit seiner umfangreichen Sammlung an Bildern, Porzellan und Skulpturen besuchen. Für den Abend ist ein Besuch
+    <span class="blank" id="blank6">6</span>
+    Semper-Oper geplant, wo am Abend Mozarts <em>Zauberflöte</em> aufgeführt wird.</p>
+
+    <p>Am 5. Juni machen Sie einen Ausflug zu dem vor den Toren der Stadt liegenden barocken Schloss Pillnitz, dessen Park
+    <span class="blank" id="blank7">7</span>
+    seine exotischen Pflanzen berühmt ist. Während der halbstündigen Busfahrt fahren Sie über die berühmte Elbbrücke <em>Blaues Wunder</em>. Am 6. Juni geht es in das Residenzschloss mit dem <em>Grünen Gewölbe</em>. Darin befinden sich über 3000 Werke der Goldschmiede- und Juwelierkunst. Am Abend geht es in die wiederaufgebaute Frauenkirche. Hier erwartet Sie ein Konzert mit Musik von Johann Sebastian Bach. Der 7. Juni
+    <span class="blank" id="blank8">8</span>
+    zu Ihrer freien Verfügung. Vielleicht möchten Sie einen Einkaufsbummel machen oder an einer Fahrt in die nahe gelegene Sächsische Schweiz
+    <span class="blank" id="blank9">9</span>.</p>
+
+    <p>Ich hoffe, dass Ihnen diese Vorabinformationen einen Überblick über die geplante Reise
+    <span class="blank" id="blank10">10</span>.</p>
+
+    <p>Nähere Informationen enthält dann unser Programmheft, in dem Sie auch die genauen Abfahrts- und Ankunftszeiten finden.</p>
+
+    <p>Mit freundlichen Grüßen<br>
+    <em>Jasmin Krämer</em><br>
+    Reisedienst Krämer</p>
+  </div>
+
+  <div class="choices">
+
+    <div class="question-block" data-blank="1">
+      <div><strong>1.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="für das">für das</label>
+          <label class="option"><input type="radio" name="q1" value="in dem">in dem</label>
+          <label class="option"><input type="radio" name="q1" value="von dem">von dem</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="2">
+      <div><strong>2.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q2" value="Da">Da</label>
+          <label class="option"><input type="radio" name="q2" value="Wann">Wann</label>
+          <label class="option"><input type="radio" name="q2" value="Wenn">Wenn</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="3">
+      <div><strong>3.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q3" value="Untergebracht">Untergebracht</label>
+          <label class="option"><input type="radio" name="q3" value="Verbracht">Verbracht</label>
+          <label class="option"><input type="radio" name="q3" value="Zugebracht">Zugebracht</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="4">
+      <div><strong>4.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q4" value="man">man</label>
+          <label class="option"><input type="radio" name="q4" value="sich">sich</label>
+          <label class="option"><input type="radio" name="q4" value="Sie">Sie</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="5">
+      <div><strong>5.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q5" value="geschaut">geschaut</label>
+          <label class="option"><input type="radio" name="q5" value="gesehen">gesehen</label>
+          <label class="option"><input type="radio" name="q5" value="gezeigt">gezeigt</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="6">
+      <div><strong>6.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q6" value="der">der</label>
+          <label class="option"><input type="radio" name="q6" value="die">die</label>
+          <label class="option"><input type="radio" name="q6" value="von">von</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="7">
+      <div><strong>7.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q7" value="für">für</label>
+          <label class="option"><input type="radio" name="q7" value="mit">mit</label>
+          <label class="option"><input type="radio" name="q7" value="wegen">wegen</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="8">
+      <div><strong>8.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q8" value="fällt">fällt</label>
+          <label class="option"><input type="radio" name="q8" value="liegt">liegt</label>
+          <label class="option"><input type="radio" name="q8" value="steht">steht</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="9">
+      <div><strong>9.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q9" value="beteiligen">beteiligen</label>
+          <label class="option"><input type="radio" name="q9" value="fahren">fahren</label>
+          <label class="option"><input type="radio" name="q9" value="teilnehmen">teilnehmen</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="10">
+      <div><strong>10.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q10" value="verschaffen">verschaffen</label>
+          <label class="option"><input type="radio" name="q10" value="vermachen">vermachen</label>
+          <label class="option"><input type="radio" name="q10" value="schaffen">schaffen</label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="button-wrapper">
+  <button id="checkBtn">Antworten prüfen</button>
+  <button id="resetBtn">Zurücksetzen</button>
+  <a href="../index2.html" id="homeBtn">Zurück zur Startseite</a>
+</div>
+
+<script>
+  const correctAnswers = {
+    1: "in dem",
+    2: "Da",
+    3: "Untergebracht",
+    4: "sich",
+    5: "gezeigt",
+    6: "der",
+    7: "für",
+    8: "steht",
+    9: "teilnehmen",
+    10: "verschaffen"
+  };
+
+  document.querySelectorAll('.option input[type="radio"]').forEach(input => {
+    input.addEventListener('change', (e) => {
+      const label = e.target.closest('label');
+      const block = e.target.closest('.question-block');
+      const blankId = block.getAttribute('data-blank');
+      const blank = document.getElementById('blank' + blankId);
+      block.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      label.classList.add('selected');
+      blank.textContent = e.target.value;
+    });
+  });
+
+  document.getElementById("checkBtn").addEventListener("click", () => {
+    document.querySelectorAll('.question-block').forEach(block => {
+      const blankId = block.getAttribute('data-blank');
+      const selectedInput = block.querySelector('input[type="radio"]:checked');
+      const options = block.querySelectorAll('.option');
+      options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+      if (selectedInput) {
+        const value = selectedInput.value;
+        const label = selectedInput.closest('.option');
+        if (value === correctAnswers[blankId]) {
+          label.classList.add('correct');
+        } else {
+          label.classList.add('incorrect');
+          options.forEach(opt => {
+            if (opt.textContent.trim() === correctAnswers[blankId]) {
+              opt.classList.add('correct');
+            }
+          });
+        }
+      }
+    });
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    document.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; });
+    const labels = [
+      "21","22","23","24","25","26","27","28","29","30"
+    ];
+    for (let i = 1; i <= 10; i++) {
+      const blank = document.getElementById('blank' + i);
+      if (blank) blank.textContent = labels[i-1];
+    }
+    document.querySelectorAll('.option').forEach(option => {
+      option.classList.remove('selected', 'correct', 'incorrect');
+    });
+  });
+</script>
+
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- Mirrored from deuropa.app/quiz/301 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:35 GMT -->
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html><html>
+<!-- Mirrored from deuropa.app/quiz/HerrWenzel by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8">
+  <title>Herr Wenzel – Kulturbund</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #e9eaec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .container {
+      display: flex;
+      max-width: 1400px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .letter {
+      flex: 2;
+      padding: 30px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .blank {
+      background-color: #3f6ccf;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      min-width: 24px;
+      text-align: center;
+      display: inline-block;
+    }
+    .choices {
+  flex: 1.5;
+  background-color: #f2f3f7;
+  padding: 30px 20px;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+    .question-block { margin-bottom: 20px; }
+    .row-container {
+      background-color: #e0e4f3;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 6px;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .option {
+      background-color: white;
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 18px;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s ease;
+      user-select: none;
+      text-align: center;
+      flex: 1;
+    }
+    .option:hover { background-color: #e6ebf9; }
+    .option.selected { background-color: #d0defc; border-color: #3f6ccf; font-weight: bold; }
+    .option.correct { background-color: #c8f7c5; border-color: #34a853; }
+    .option.incorrect { background-color: #fbd5d5; border-color: #e53935; }
+    input[type="radio"] { display: none; }
+    .button-wrapper {
+  max-width: 1400px;
+  margin: 30px auto 60px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+#checkBtn, #homeBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+#checkBtn { background-color: #3f6ccf; color: white; }
+#checkBtn:hover { background-color: #2f56b3; }
+#homeBtn { background-color: #7c3aed; color: white; display: inline-block; line-height: 1.6; }
+#homeBtn:hover { background-color: #5a6268; }
+#resetBtn {
+  background-color: #7c3aed;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+#resetBtn:hover { background-color: #5a6268; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="letter">
+
+    <p><strong>Sprachbausteine, Teil 1</strong><br>
+    <em>Lesen Sie den folgenden Text und entscheiden Sie, welches Wort (a, b oder c) in die Lücken passt. Markieren Sie Ihre Lösungen auf dem Antwortbogen bei den Aufgaben 21–30.</em></p>
+
+    <p><strong>Sehr geehrter Herr Wenzel,</strong></p>
+
+    <p>vielen Dank
+    <span class="blank" id="blank1">21</span>
+    Ihre Anfrage bezüglich der Aktivitäten des Kulturbunds. Unser Hauptanliegen ist es, das kulturelle Leben zu bereichern und kulturelle Initiativen zu fördern. Für unsere Mitglieder findet einmal im Monat – und zwar
+    <span class="blank" id="blank2">22</span>
+    am ersten Montag – ein kultureller Abend in unserer Geschäftsstelle in der Villa Emilia statt. Jeder Abend ist einem bestimmten kulturellen Aspekt
+    <span class="blank" id="blank3">23</span>
+    , von der Dichtung über die Musik bis hin zum Theater.</p>
+
+    <p>Darüber hinaus besuchen wir regelmäßig Theateraufführungen innerhalb Deutschlands und haben dazu mehrere
+    <span class="blank" id="blank4">24</span>
+    Treffen. Von besonderem Interesse dürften für die
+    <span class="blank" id="blank5">25</span>
+    unserer Mitglieder unsere Studienreisen sein. Diese führen beispielsweise
+    <span class="blank" id="blank6">26</span>
+    der Route deutscher Dichter von Frankfurt nach Weimar, nach Salzburg und vieles mehr.</p>
+
+    <p>In diesem Jahr bieten wir übrigens eine ganz besondere Reise an:
+    <span class="blank" id="blank7">27</span>
+    den Spuren Tschaikowskis nach Russland. Alle von uns veranstalteten Reisen werden von sachkundigen Musik- oder Literaturwissenschaftlern begleitet, mit
+    <span class="blank" id="blank8">28</span>
+    Hilfe Sie Ihr kulturelles Wissen erweitern können. Auch bei der Wahl der Verkehrsmittel und Unterkünfte wird auf besonderen Komfort geachtet.</p>
+
+    <p>Ein besonderer Service ist die Kartentausche. Wenn Sie Theaterkarten besitzen, aber nicht nutzen wollen, können Sie diese bei uns gegen andere Karten umtauschen –
+    <span class="blank" id="blank9">29</span>
+    diese organisatorisch möglich ist.</p>
+
+    <p>Der Preis für die Mitgliedschaft beträgt 200 Euro pro Jahr für eine Einzelperson bzw. 300 Euro für eine Doppelmitgliedschaft (zwei Personen, z.B. Ehepaare, Freunde etc.). Unsere Geschäftsstelle ist von Montag bis Freitag, von 9 bis 12 und von 14 bis 17 Uhr
+    <span class="blank" id="blank10">30</span>
+    und steht Ihnen für Fragen gern zur Verfügung. Eine Anmeldeformular liegt diesem Schreiben bei.</p>
+
+    <p>In kultureller Verbundenheit grüßen wir Sie herzlich</p>
+
+    <p><em>Sabine Sänger</em><br>
+    Kulturbund</p>
+  </div>
+
+  <div class="choices">
+
+    <div class="question-block" data-blank="1">
+      <div><strong>21.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="auf">auf</label>
+          <label class="option"><input type="radio" name="q1" value="für">für</label>
+          <label class="option"><input type="radio" name="q1" value="wegen">wegen</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="2">
+      <div><strong>22.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q2" value="jeden">jeden</label>
+          <label class="option"><input type="radio" name="q2" value="jedoch">jedoch</label>
+          <label class="option"><input type="radio" name="q2" value="jeweils">jeweils</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="3">
+      <div><strong>23.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q3" value="gedacht">gedacht</label>
+          <label class="option"><input type="radio" name="q3" value="geeignet">geeignet</label>
+          <label class="option"><input type="radio" name="q3" value="gewidmet">gewidmet</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="4">
+      <div><strong>24.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q4" value="vorbereitende">vorbereitende</label>
+          <label class="option"><input type="radio" name="q4" value="vorbereitend">vorbereitend</label>
+          <label class="option"><input type="radio" name="q4" value="vorbereiteten">vorbereiteten</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="5">
+      <div><strong>25.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q5" value="am meisten">am meisten</label>
+          <label class="option"><input type="radio" name="q5" value="meisten">meisten</label>
+          <label class="option"><input type="radio" name="q5" value="meistens">meistens</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="6">
+      <div><strong>26.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q6" value="entlang">entlang</label>
+          <label class="option"><input type="radio" name="q6" value="gegenüber">gegenüber</label>
+          <label class="option"><input type="radio" name="q6" value="während">während</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="7">
+      <div><strong>27.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q7" value="auf">auf</label>
+          <label class="option"><input type="radio" name="q7" value="hinter">hinter</label>
+          <label class="option"><input type="radio" name="q7" value="neben">neben</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="8">
+      <div><strong>28.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q8" value="der">der</label>
+          <label class="option"><input type="radio" name="q8" value="deren">deren</label>
+          <label class="option"><input type="radio" name="q8" value="dessen">dessen</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="9">
+      <div><strong>29.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q9" value="sofern">sofern</label>
+          <label class="option"><input type="radio" name="q9" value="sogar">sogar</label>
+          <label class="option"><input type="radio" name="q9" value="sogleich">sogleich</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="10">
+      <div><strong>30.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q10" value="erhältlich">erhältlich</label>
+          <label class="option"><input type="radio" name="q10" value="erreichbar">erreichbar</label>
+          <label class="option"><input type="radio" name="q10" value="wirksam">wirksam</label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="button-wrapper">
+  <button id="checkBtn">Antworten prüfen</button>
+  <button id="resetBtn">Zurücksetzen</button>
+  <a href="../indexb2.html" id="homeBtn">Zurück zur Startseite</a>
+</div>
+
+<script>
+  const correctAnswers = {
+    1: "für",
+    2: "jeweils",
+    3: "gewidmet",
+    4: "vorbereitende",
+    5: "meisten",
+    6: "entlang",
+    7: "auf",
+    8: "deren",
+    9: "sofern",
+    10: "erreichbar"
+  };
+
+  document.querySelectorAll('.option input[type="radio"]').forEach(input => {
+    input.addEventListener('change', (e) => {
+      const label = e.target.closest('label');
+      const block = e.target.closest('.question-block');
+      const blankId = block.getAttribute('data-blank');
+      const blank = document.getElementById('blank' + blankId);
+      block.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      label.classList.add('selected');
+      blank.textContent = e.target.value;
+    });
+  });
+
+  document.getElementById("checkBtn").addEventListener("click", () => {
+    document.querySelectorAll('.question-block').forEach(block => {
+      const blankId = block.getAttribute('data-blank');
+      const selectedInput = block.querySelector('input[type="radio"]:checked');
+      const options = block.querySelectorAll('.option');
+      options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+      if (selectedInput) {
+        const value = selectedInput.value;
+        const label = selectedInput.closest('.option');
+        if (value === correctAnswers[blankId]) {
+          label.classList.add('correct');
+        } else {
+          label.classList.add('incorrect');
+          options.forEach(opt => {
+            if (opt.textContent.trim() === correctAnswers[blankId]) {
+              opt.classList.add('correct');
+            }
+          });
+        }
+      }
+    });
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    document.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; });
+    const labels = ["21","22","23","24","25","26","27","28","29","30"];
+    for (let i = 1; i <= 10; i++) {
+      const blank = document.getElementById('blank' + i);
+      if (blank) blank.textContent = labels[i-1];
+    }
+    document.querySelectorAll('.option').forEach(option => {
+      option.classList.remove('selected', 'correct', 'incorrect');
+    });
+  });
+</script>
+
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- Mirrored from deuropa.app/quiz/HerrWenzel by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:35 GMT -->
+</html>

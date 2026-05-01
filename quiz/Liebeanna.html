@@ -1,0 +1,352 @@
+<!DOCTYPE html><html>
+<!-- Mirrored from deuropa.app/quiz/Liebeanna by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8">
+  <title>Liebe Anna – Marta</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #e9eaec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .container {
+      display: flex;
+      max-width: 1400px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .letter {
+      flex: 2;
+      padding: 30px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .blank {
+      background-color: #3f6ccf;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      min-width: 24px;
+      text-align: center;
+      display: inline-block;
+    }
+    .choices {
+  flex: 1.5;
+  background-color: #f2f3f7;
+  padding: 30px 20px;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+    .question-block { margin-bottom: 20px; }
+    .row-container {
+      background-color: #e0e4f3;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 6px;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .option {
+      background-color: white;
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 18px;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s ease;
+      user-select: none;
+      text-align: center;
+      flex: 1;
+    }
+    .option:hover { background-color: #e6ebf9; }
+    .option.selected { background-color: #d0defc; border-color: #3f6ccf; font-weight: bold; }
+    .option.correct { background-color: #c8f7c5; border-color: #34a853; }
+    .option.incorrect { background-color: #fbd5d5; border-color: #e53935; }
+    input[type="radio"] { display: none; }
+    .button-wrapper {
+  max-width: 1400px;
+  margin: 30px auto 60px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+#checkBtn, #homeBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+#checkBtn { background-color: #3f6ccf; color: white; }
+#checkBtn:hover { background-color: #2f56b3; }
+#homeBtn { background-color: #7c3aed; color: white; display: inline-block; line-height: 1.6; }
+#homeBtn:hover { background-color: #5a6268; }
+#resetBtn {
+  background-color: #7c3aed;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  min-width: 200px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+#resetBtn:hover { background-color: #5a6268; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="letter">
+
+    <p><strong>Sprachbausteine, Teil 1</strong><br>
+    <em>Lesen Sie den folgenden Text und entscheiden Sie, welches Wort (a, b oder c) in die Lücken passt. Markieren Sie Ihre Lösungen auf dem Antwortbogen bei den Aufgaben 21–30.</em></p>
+
+    <p><strong>Liebe Anna,</strong></p>
+
+    <p>jetzt ist schon bald ein halbes Jahr
+    <span class="blank" id="blank1">21</span>,
+    seit ich dir das letzte Mal geschrieben habe. Bitte denke jetzt nicht, dass ich dich vergessen habe.
+    Aber, wie du ja schon weißt, stehe ich vor der Abschlussprüfung in Deutsch und das bedeutet
+    jede Menge Arbeit und Stress.</p>
+
+    <p>Stell dir vor, ausgerechnet jetzt, nur zwei Wochen vor der Prüfung, ist unsere Lehrerin,
+    Frau Reuter,
+    <span class="blank" id="blank2">22</span>
+    erkrankt. Sie liegt sogar im Krankenhaus und kommt erst wieder zurück,
+    <span class="blank" id="blank3">23</span>
+    unsere Prüfung schon längst vorbei ist. Ihre Vertretung, Frau Eichhorn, ist
+    <span class="blank" id="blank4">24</span>
+    sehr nett, aber sie hat gerade erst mit dem Unterrichten angefangen und noch keine Erfahrung.
+    Das macht uns alle ein bisschen unsicher. Aber in zwei Wochen ist hoffentlich alles geschafft.
+    Und dann
+    <span class="blank" id="blank5">25</span>
+    ich alle Bücher und Hefte in die Ecke legen und erst einmal ein paar Tage gar nichts tun.
+    <span class="blank" id="blank6">26</span>
+    freue ich mich schon riesig. Wenn du Zeit und Lust hast, kannst du mich doch besuchen kommen
+    und wir können zusammen etwas unternehmen. Wir wollten doch schon lange Bad Homburg besuchen
+    und im Taunus wandern. Was hältst du
+    <span class="blank" id="blank7">27</span>
+    ?</p>
+
+    <p>Was macht deine Au-pair-Familie? Musst du immer noch so viel Hausarbeit machen? Hören
+    „deine" Kinder auf dich oder tanzen sie dir immer noch
+    <span class="blank" id="blank8">28</span>
+    der Nase herum, wie du in deinem letzten Brief geschrieben hast? Es ist bestimmt nicht so
+    leicht, einen zweijährigen Jungen und ein vierjähriges Mädchen den ganzen Tag
+    <span class="blank" id="blank9">29</span>.
+    Aber ich kenne dich: Du hast gute Ideen und bestimmt hast du schon einen Weg gefunden,
+    wie du mit den Kindern
+    <span class="blank" id="blank10">30</span>.</p>
+
+    <p>So, jetzt muss ich mich wieder an meine Prüfungsvorbereitung machen, sonst wird mir die
+    Zeit zu knapp. Ich grüße dich ganz herzlich und wünsche dir alles Gute.</p>
+
+    <p>Bis bald<br>
+    <em>Deine Marta</em></p>
+  </div>
+
+  <div class="choices">
+
+    <div class="question-block" data-blank="1">
+      <div><strong>21.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="vergangen">vergangen</label>
+          <label class="option"><input type="radio" name="q1" value="vergehend">vergehend</label>
+          <label class="option"><input type="radio" name="q1" value="vergingen">vergingen</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="2">
+      <div><strong>22.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q2" value="gleich">gleich</label>
+          <label class="option"><input type="radio" name="q2" value="plötzlich">plötzlich</label>
+          <label class="option"><input type="radio" name="q2" value="sofort">sofort</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="3">
+      <div><strong>23.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q3" value="als">als</label>
+          <label class="option"><input type="radio" name="q3" value="da">da</label>
+          <label class="option"><input type="radio" name="q3" value="wenn">wenn</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="4">
+      <div><strong>24.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q4" value="sondern">sondern</label>
+          <label class="option"><input type="radio" name="q4" value="sowohl">sowohl</label>
+          <label class="option"><input type="radio" name="q4" value="zwar">zwar</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="5">
+      <div><strong>25.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q5" value="werde">werde</label>
+          <label class="option"><input type="radio" name="q5" value="wollte">wollte</label>
+          <label class="option"><input type="radio" name="q5" value="würde">würde</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="6">
+      <div><strong>26.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q6" value="Damit">Damit</label>
+          <label class="option"><input type="radio" name="q6" value="Darauf">Darauf</label>
+          <label class="option"><input type="radio" name="q6" value="Davon">Davon</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="7">
+      <div><strong>27.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q7" value="darüber">darüber</label>
+          <label class="option"><input type="radio" name="q7" value="davon">davon</label>
+          <label class="option"><input type="radio" name="q7" value="dazu">dazu</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="8">
+      <div><strong>28.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q8" value="an">an</label>
+          <label class="option"><input type="radio" name="q8" value="auf">auf</label>
+          <label class="option"><input type="radio" name="q8" value="in">in</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="9">
+      <div><strong>29.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q9" value="beschäftigen lassen">beschäftigen lassen</label>
+          <label class="option"><input type="radio" name="q9" value="beschäftigt zu sein">beschäftigt zu sein</label>
+          <label class="option"><input type="radio" name="q9" value="zu beschäftigen">zu beschäftigen</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-block" data-blank="10">
+      <div><strong>30.</strong></div>
+      <div class="row-container">
+        <div class="options">
+          <label class="option"><input type="radio" name="q10" value="zurechtkamst">zurechtkamst</label>
+          <label class="option"><input type="radio" name="q10" value="zurechkommst">zurechkommst</label>
+          <label class="option"><input type="radio" name="q10" value="zurechtzukommen">zurechtzukommen</label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="button-wrapper">
+  <button id="checkBtn">Antworten prüfen</button>
+  <button id="resetBtn">Zurücksetzen</button>
+  <a href="../indexb2.html" id="homeBtn">Zurück zur Startseite</a>
+</div>
+
+<script>
+  const correctAnswers = {
+    1: "vergangen",
+    2: "plötzlich",
+    3: "wenn",
+    4: "zwar",
+    5: "würde",
+    6: "Darauf",
+    7: "davon",
+    8: "auf",
+    9: "zu beschäftigen",
+    10: "zurechkommst"
+  };
+
+  document.querySelectorAll('.option input[type="radio"]').forEach(input => {
+    input.addEventListener('change', (e) => {
+      const label = e.target.closest('label');
+      const block = e.target.closest('.question-block');
+      const blankId = block.getAttribute('data-blank');
+      const blank = document.getElementById('blank' + blankId);
+      block.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+      label.classList.add('selected');
+      blank.textContent = e.target.value;
+    });
+  });
+
+  document.getElementById("checkBtn").addEventListener("click", () => {
+    document.querySelectorAll('.question-block').forEach(block => {
+      const blankId = block.getAttribute('data-blank');
+      const selectedInput = block.querySelector('input[type="radio"]:checked');
+      const options = block.querySelectorAll('.option');
+      options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+      if (selectedInput) {
+        const value = selectedInput.value;
+        const label = selectedInput.closest('.option');
+        if (value === correctAnswers[blankId]) {
+          label.classList.add('correct');
+        } else {
+          label.classList.add('incorrect');
+          options.forEach(opt => {
+            if (opt.textContent.trim() === correctAnswers[blankId]) {
+              opt.classList.add('correct');
+            }
+          });
+        }
+      }
+    });
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    document.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; });
+    const labels = ["21","22","23","24","25","26","27","28","29","30"];
+    for (let i = 1; i <= 10; i++) {
+      const blank = document.getElementById('blank' + i);
+      if (blank) blank.textContent = labels[i-1];
+    }
+    document.querySelectorAll('.option').forEach(option => {
+      option.classList.remove('selected', 'correct', 'incorrect');
+    });
+  });
+</script>
+
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
+<!-- Mirrored from deuropa.app/quiz/Liebeanna by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:35 GMT -->
+</html>

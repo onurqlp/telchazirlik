@@ -1,0 +1,304 @@
+<!DOCTYPE html><html>
+<!-- Mirrored from deuropa.app/quiz/alatfalwaalmadaris by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8"><meta name="download_date" content="2026-01-29T05:38:47.394Z"/>
+<title>Lesen Teil 1 - AlAtfal wa AlMadaris</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>/*! ... نفس كود CSS الأصلي بالكامل ... */</style>
+<style>
+:root {
+--primary-color: #667eea;
+--secondary-color: #a78bfa;
+--danger-color: #ef4444;
+--light-bg: #ecf0f1;
+--dark-text: #2c3e50;
+--light-text: #ffffff;
+--border-radius: 10px;
+--box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+--box-shadow-hover: 0 8px 20px rgba(0,0,0,0.15);
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; margin: 0; padding: 10px;
+background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: var(--dark-text);
+animation: fadeInPage 0.8s ease-out; min-height: 100vh;
+}
+@media (min-width: 600px) { body { padding: 15px; } }
+@media (min-width: 992px) { body { padding: 20px; } }
+@keyframes fadeInPage { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+.main-header {
+background-color: var(--primary-color); color: var(--light-text); padding: 12px 15px;
+font-size: 20px; margin-bottom: 20px; border-radius: var(--border-radius);
+text-align: center; font-weight: 600; box-shadow: var(--box-shadow); letter-spacing: 0.5px;
+}
+@media (min-width: 768px) { .main-header { padding: 20px 25px; font-size: 26px; margin-bottom: 25px; } }
+.container { display: flex; flex-direction: row; justify-content: space-between; gap: 15px; }
+@media(min-width: 992px) { .container { gap: 20px; } }
+.left-column { width: 58%; flex-shrink: 0; }
+.right-column { width: 38%; flex-shrink: 0; }
+.quiz-scroll-container, .right-column-content {
+background-color: var(--light-text); border-radius: var(--border-radius); padding: 10px;
+box-shadow: var(--box-shadow); max-height: 75vh; overflow-y: auto; overflow-x: hidden;
+scrollbar-width: thin; scrollbar-color: var(--primary-color) var(--light-bg);
+}
+@media (min-width: 992px) { .quiz-scroll-container, .right-column-content { padding: 15px; max-height: 70vh; } }
+.quiz-scroll-container::-webkit-scrollbar, .right-column-content::-webkit-scrollbar { width: 6px; }
+@media (min-width: 992px) { .quiz-scroll-container::-webkit-scrollbar, .right-column-content::-webkit-scrollbar { width: 8px; } }
+.quiz-scroll-container::-webkit-scrollbar-track, .right-column-content::-webkit-scrollbar-track { background: var(--light-bg); border-radius: var(--border-radius); }
+.quiz-scroll-container::-webkit-scrollbar-thumb, .right-column-content::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: var(--border-radius); border: 2px solid var(--light-bg); }
+.question-box {
+border: 1px solid #bdc3c7; border-left: 4px solid var(--primary-color); border-radius: var(--border-radius);
+margin-bottom: 15px; padding: 10px; background-color: #fdfdfd;
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+display: flex; flex-direction: column; min-height: 120px;
+}
+@media (min-width: 992px) { .question-box { border-left-width: 5px; margin-bottom: 20px; padding: 15px; min-height: 150px; } }
+.question-box:hover { transform: translateY(-3px); box-shadow: var(--box-shadow-hover); }
+.email-fields { margin-bottom: 8px; }
+@media (min-width: 992px) { .email-fields { margin-bottom: 10px; } }
+.drop-target {
+background-color: #f9f9f9; padding: 10px; border: 2px dashed #cccccc; min-height: 40px;
+border-radius: 6px; text-align: center; transition: background-color 0.3s, border-color 0.3s;
+display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer;
+}
+@media (min-width: 992px) { .drop-target { padding: 12px; min-height: 45px; border-radius: 8px; } }
+.drop-target.empty-drop-target::before { content: "Drop here"; color: #aaa; font-style: italic; font-size: 0.8em; }
+@media (min-width: 992px) { .drop-target.empty-drop-target::before { content: "Antwort hier ablegen"; font-size: 0.9em; } }
+.drop-target:not(.empty-drop-target)::before { content: ""; }
+.drop-target:hover, .drop-target.drag-over { background-color: #f5f3ff; border-color: var(--primary-color); }
+.question-text { font-size: 0.8em; color: #555; line-height: 1.5; overflow-y: auto; max-height: 200px; padding-right: 5px; }
+@media (min-width: 992px) { .question-text { font-size: 0.9em; line-height: 1.6; max-height: 300px; } }
+.draggable {
+background-color: #e0e0e0; color: var(--dark-text); margin: 8px 0; padding: 8px 10px;
+border-radius: 6px; cursor: grab; display: flex; align-items: center; justify-content: center;
+transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s, outline 0.2s;
+user-select: none; font-size: 0.85em; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+text-align: center; word-break: break-word;
+}
+@media (min-width: 992px) { .draggable { margin: 10px 0; padding: 12px 15px; border-radius: 8px; font-size: 0.95em; } }
+.draggable:hover { background-color: #d0d0d0; transform: scale(1.02); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.draggable.dragging { opacity: 0.6; transform: scale(0.95); box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: grabbing; }
+.draggable.selected {
+outline: 3px solid var(--primary-color);
+transform: scale(1.03);
+box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+background-color: #e9d5ff;
+}
+.draggable.selected:hover {
+background-color: #ddd6fe;
+transform: scale(1.03);
+}
+.drop-target.correct { background-color: #f3e8ff !important; border: 2px solid var(--secondary-color) !important; }
+.drop-target.correct::after {
+content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--secondary-color);
+position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 1em;
+}
+@media (min-width: 992px) { .drop-target.correct::after { right: 10px; font-size: 1.2em; } }
+.drop-target.incorrect { background-color: #fee2e2 !important; border: 2px solid var(--danger-color) !important; }
+.drop-target.incorrect::after {
+content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--danger-color);
+position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 1em;
+}
+@media (min-width: 992px) { .drop-target.incorrect::after { right: 10px; font-size: 1.2em; } }
+.drop-target .draggable { background-color: var(--primary-color); color: var(--light-text); width: calc(100% - 25px); padding-right: 0; margin: 0; }
+@media (min-width: 992px) { .drop-target .draggable { width: calc(100% - 40px); } }
+.drop-target.correct .draggable { background-color: var(--secondary-color) !important; }
+.drop-target.incorrect .draggable { background-color: var(--danger-color) !important; }
+.button-container { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+@media (min-width: 992px) { .button-container { margin-top: 25px; gap: 15px; } }
+.quiz-button, .quiz-button-link {
+padding: 10px 20px; border: none; background-color: var(--primary-color); color: white !important;
+font-size: 14px; font-weight: 500; border-radius: var(--border-radius); cursor: pointer;
+transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+box-shadow: var(--box-shadow); text-decoration: none;
+}
+@media (min-width: 992px) { .quiz-button, .quiz-button-link { padding: 12px 25px; font-size: 16px; } }
+.quiz-button:hover, .quiz-button-link:hover { background-color: #5568d3; transform: translateY(-2px); box-shadow: var(--box-shadow-hover); color: white !important; }
+.quiz-button:active, .quiz-button-link:active { transform: translateY(0px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.quiz-button.secondary, .quiz-button-link.secondary { background-color: #8b5cf6; }
+.quiz-button.secondary:hover, .quiz-button-link.secondary:hover { background-color: #7c3aed; }
+#result {
+text-align: center; margin-top: 20px; padding: 12px; font-size: 1em; font-weight: 500;
+background-color: var(--light-text); border-radius: var(--border-radius); box-shadow: var(--box-shadow);
+}
+@media (min-width: 992px) { #result { margin-top: 25px; padding: 15px; font-size: 1.1em; } }
+#result .correct-count { color: var(--secondary-color); }
+#result .total-count { color: var(--primary-color); }
+#warningBox {
+display: none;
+position: fixed;
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
+background: #f81d1d;
+color: #ffffff;
+padding: 15px 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.3);
+font-family: Arial, sans-serif;
+font-size: 14px;
+font-weight: bold;
+z-index: 9999;
+}
+</style>
+</head>
+<body>
+<div class="main-header">Lesen Teil 1 - AlAtfal wa AlMadaris</div>
+<div class="container">
+<div class="left-column">
+<div class="quiz-scroll-container">
+
+<!-- Question 1 - Correct: F -->
+<div class="question-box" data-correct="Traditionen zum Schulanfang">
+<div class="email-fields">
+<div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<div class="question-text">
+Nach der englischen Bezeichnung für "Schultüte" sucht man vergebens. Die mit Süßigkeiten und kleinen Geschenken gefüllte Spitztüte aus Karton, die Kinder in Deutschland am ersten Schultag von ihren Eltern bekommen, ist offenbar etwas typisch Deutsches. In Großbritannien besucht die Klassenlehrerin oder der Klassenlehrer die Familie zu Hause, bevor das Kind in die Schule kommt. So können sich Lehrer, Schüler und Eltern schon vor dem Schuleintritt kennenlernen. In den USA bekommen die Kinder vor dem ersten Schultag kleine Geschenke; Dinge, die sie in der Schule gebrauchen können. In Russland wird zum Schulanfang zu Hause ein großes Familienfest gefeiert. Den Lehrerinnen und Lehrern überreichen die Schulanfänger Blumen. Gefeiert wird die Einschulung auch in Japan, allerdings nicht zuhause, sondern in der Schule. Dort gibt es Ansprachen und Aufführungen von älteren Schülerinnen und Schülern. In Indien wird am ersten Schultag ein besonderer Joghurt gegessen. Er soll den Schulanfängern Glück bringen. Am wenigsten Aufheben macht man in Frankreich von der Einschulung: Dort gibt es keine besonderen Bräuche.
+</div>
+</div>
+
+<!-- Question 2 - Correct: E -->
+<div class="question-box" data-correct="Neues Buch für kleine Leseanfänger">
+<div class="email-fields">
+<div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<div class="question-text">
+Raban Rabovic ist ein kleiner Rabe. Seit Wochen denkt er nur noch an eines: den Schulanfang! Nun ist es endlich so weit: Für ihn und neun andere Rabenkinder beginnt die Schule. Wie es Raban dabei ergeht, erzählt Antonija Tomic in Schulanfang in der Rabenschule. So heißt ihr Erstlesebuch, das gerade erschienen ist. Antonija Tomic hat als Lektorin in einem Kinderbuchverlag gearbeitet, bevor sie selbst begonnen hat, Erzählungen zu schreiben. Inzwischen hat sie sich vor allem als Bilderbuchautorin für Kinder einen Namen gemacht. Von ihr stammen dabei nicht nur die Geschichten, sondern auch die meist farbigen Illustrationen. Auch die ersten Schultage von Raban begleiten liebevoll gezeichnete Bilder. Dazu gibt es eine CD mit Liedern, die kleine Rabenkinder gerne singen. In einem Begleitheft finden sich zudem Arbeitsblätter mit Mal- und Schreibübungen. Für alle ABC-Schützen, die gerade lesen und schreiben lernen, ein ideales Geschenk für den ersten Schultag!
+</div>
+</div>
+
+<!-- Question 3 - Correct: G -->
+<div class="question-box" data-correct="VORSICHT AN HALTESTELLEN!">
+<div class="email-fields">
+<div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<div class="question-text">
+Auf den Straßen sind ab Schulbeginn wieder viele Kinder unterwegs. Autofahrer sind deshalb zu erhöhter Aufmerksamkeit aufgefordert, besonders beim Überholen an Haltestellen der öffentlichen Verkehrsmittel. In der Straßenverkehrsordnung ist das Überholen von Bussen und Straßenbahnen genau geregelt: An Omnibussen des Linienverkehrs, an Straßenbahnen und an gekennzeichneten Schulbussen, die an Haltestellen stehen bleiben, darf man nur vorsichtig vorbeifahren. Wenn Fahrgäste ein- oder aussteigen, dürfen Autofahrer rechts nur mit Schrittgeschwindigkeit vorbeifahren. Sie müssen auch genügend Abstand wahren, um die Fahrgäste nicht zu gefährden. Wenn nötig, müssen die Autofahrer warten. Omnibusse des Linienverkehrs und gekennzeichnete Schulbusse, die sich einer Haltestelle nähern und das Warnblinklicht eingeschaltet haben, darf man gar nicht überholen. Auf jeden Fall sollten Autofahrer damit rechnen, dass sich Kinder dort vielleicht nicht so verhalten, wie sie es eigentlich sollten, zum Beispiel beim Überqueren der Fahrbahn. Dann ist es Aufgabe der Autofahrer, für die Sicherheit der Kinder zu sorgen.
+</div>
+</div>
+
+<!-- Question 4 - Correct: B -->
+<div class="question-box" data-correct="Das richtige Alter für die Einschulung">
+<div class="email-fields">
+<div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<div class="question-text">
+In Deutschland herrscht für alle Kinder Schulpflicht: Ab einem gewissen Alter muss jedes Kind die Schule besuchen. An ihrem ersten Schultag können sie fünf, sechs oder sieben Jahre alt sein. Der genaue Zeitpunkt des Schuleintritts wurde Ende der 1990er Jahre bewusst flexibler gestaltet. Denn das optimale Alter für den Schuleintritt ist umstritten. Zum einen setzen die einzelnen Bundesländer unterschiedliche Stichtage und Mindestalter fest. Zum anderen gibt es höchst unterschiedliche Ansichten über den Zeitpunkt, zu dem ein Kind reif sein soll für die Schule. Die einen argumentieren, dass auch Fünfjährige schon lesen und schreiben lernen können. Die anderen warnen vor Überforderung und Leistungsdruck. Entscheidend ist aber nicht das Alter, sondern die Entwicklung eines Kindes: Wenn sich ein fünfjähriges Kind im Kindergarten langweilt und sich auf die Schule freut, ist es vermutlich bereit für den Schulanfang. Ein sechsjähriges Kind aber, das kaum stillsitzen kann, ist im Kindergarten noch gut aufgehoben.
+</div>
+</div>
+
+<!-- Question 5 - Correct: H -->
+<div class="question-box" data-correct="Weniger Fahrten in den Schulferien">
+<div class="email-fields">
+<div class="email-subject drop-target empty-drop-target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<div class="question-text">
+Ein Großteil des Busverkehrs in der Region dient vor allem dem Schulverkehr. Fast die Hälfte der in unserem Gebiet eingesetzten Busse fährt ausschließlich an Schultagen. Daher sind viele Fahrten in den Fahrplänen mit einem S gekennzeichnet. Diese Fußnote steht für "nur an Schultagen". Zudem gibt es auch Fahrten, die "nur in den Ferien" stattfinden; diese sind mit einem F gekennzeichnet. Die mit einem S gekennzeichneten Fahrten stehen natürlich jedem Fahrgast zur Verfügung und sind nicht ausschließlich für die Beförderung von Schülerinnen und Schülern zugelassen. Allerdings muss man bei diesen Fahrten mit gewissen Einschränkungen rechnen: Sie gelten nicht an Ferientagen. Hierbei ist zudem zu berücksichtigen, dass auch die Ferien in den angrenzenden Bundesländern ausschlaggebend sein können. Bitte achten Sie auf jeden Fall auf die Anmerkungen في den jeweiligen Fußnoten. Bei Regionalzügen und Straßenbahnen gibt es ebenfalls bestimmte Fahrten, die sich an Schul- und Feiertagen unterscheiden. Bitte beachten Sie auch hier die Angaben in den Fahrplänen.
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="right-column">
+<div class="right-column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+<div class="draggable" draggable="true" id="a1" ondragstart="drag(event)">Das neue Schülerticket - rund ums Jahr mit Bus und Bahn fahren</div>
+<div class="draggable" draggable="true" id="a2" ondragstart="drag(event)">Das richtige Alter für die Einschulung</div>
+<div class="draggable" draggable="true" id="a3" ondragstart="drag(event)">Mit Schulanfängern richtiges Verhalten im Verkehr üben</div>
+<div class="draggable" draggable="true" id="a4" ondragstart="drag(event)">Neue Methode: So lernen Kinder leichter lesen und schreiben</div>
+<div class="draggable" draggable="true" id="a5" ondragstart="drag(event)">Neues Buch für kleine Leseanfänger</div>
+<div class="draggable" draggable="true" id="a6" ondragstart="drag(event)">Traditionen zum Schulanfang</div>
+<div class="draggable" draggable="true" id="a7" ondragstart="drag(event)">VORSICHT AN HALTESTELLEN!</div>
+<div class="draggable" draggable="true" id="a8" ondragstart="drag(event)">Weniger Fahrten in den Schulferien</div>
+<div class="draggable" draggable="true" id="a9" ondragstart="drag(event)">Woher stammt der Brauch mit der Schultüte?</div>
+<div class="draggable" draggable="true" id="a10" ondragstart="drag(event)">Wörterbuch mit CD - Neuerscheinung</div>
+</div>
+</div>
+</div>
+
+<div class="button-container">
+<button onclick="submitQuiz()" class="quiz-button">
+<i class="fas fa-paper-plane"></i> Abschicken
+</button>
+<button onclick="resetQuiz()" class="quiz-button secondary">
+<i class="fas fa-redo"></i> Zurücksetzen
+</button>
+<a href="../index2.html" class="quiz-button-link secondary">
+<i class="fas fa-home"></i> Zurück zur Startseite
+</a>
+</div>
+<div id="result"></div>
+
+<!-- نفس كود JavaScript الأصلي تماماً -->
+<script>
+const rightColumnContent = document.querySelector(".right-column .right-column-content");
+const originalAnswerOrder = Array.from(rightColumnContent.querySelectorAll('.draggable'));
+let selectedDraggable = null;
+
+function selectItem(item) {
+if (selectedDraggable) { selectedDraggable.classList.remove('selected'); }
+selectedDraggable = item;
+if (selectedDraggable) { selectedDraggable.classList.add('selected'); }
+}
+function deselectItem() {
+if (selectedDraggable) { selectedDraggable.classList.remove('selected'); selectedDraggable = null; }
+}
+function handleDraggableClicked(event) {
+const clickedItem = event.currentTarget;
+event.stopPropagation();
+if (selectedDraggable === clickedItem) { deselectItem(); if (clickedItem.parentElement.classList.contains('drop-target')) { const parentDropTarget = clickedItem.parentElement; rightColumnContent.appendChild(clickedItem); updateDropTargetVisualState(parentDropTarget); parentDropTarget.classList.remove('correct', 'incorrect'); } }
+else { if (clickedItem.parentElement.classList.contains('drop-target')) { const parentDropTarget = clickedItem.parentElement; rightColumnContent.appendChild(clickedItem); updateDropTargetVisualState(parentDropTarget); parentDropTarget.classList.remove('correct', 'incorrect'); } selectItem(clickedItem); }
+}
+function handleDropTargetClicked(event) {
+const clickedDropTarget = event.currentTarget;
+event.stopPropagation();
+if (selectedDraggable) {
+const existingItemInTarget = clickedDropTarget.querySelector('.draggable');
+if (existingItemInTarget && existingItemInTarget !== selectedDraggable) { rightColumnContent.appendChild(existingItemInTarget); }
+clickedDropTarget.innerHTML = '';
+clickedDropTarget.appendChild(selectedDraggable);
+updateDropTargetVisualState(clickedDropTarget);
+clickedDropTarget.classList.remove('correct', 'incorrect');
+deselectItem();
+} else if (!selectedDraggable && clickedDropTarget.querySelector('.draggable')) {
+const itemToPickUp = clickedDropTarget.querySelector('.draggable');
+rightColumnContent.appendChild(itemToPickUp);
+updateDropTargetVisualState(clickedDropTarget);
+clickedDropTarget.classList.remove('correct', 'incorrect');
+selectItem(itemToPickUp);
+}
+}
+function handleAnswerPoolClicked(event) {
+if (event.target === rightColumnContent && selectedDraggable) {
+if (selectedDraggable.parentElement !== rightColumnContent) { rightColumnContent.appendChild(selectedDraggable); }
+deselectItem();
+}
+}
+function initializeClickInteractions() {
+document.querySelectorAll('.draggable').forEach(item => { item.addEventListener('click', handleDraggableClicked); });
+document.querySelectorAll('.drop-target').forEach(target => { target.addEventListener('click', handleDropTargetClicked); });
+rightColumnContent.addEventListener('click', handleAnswerPoolClicked);
+}
+function allowDrop(ev) { ev.preventDefault(); let potentialDropTarget = ev.target; while(potentialDropTarget && !potentialDropTarget.classList.contains('drop-target') && !potentialDropTarget.classList.contains('right-column-content')) { potentialDropTarget = potentialDropTarget.parentElement; } if (potentialDropTarget && potentialDropTarget.classList.contains('drop-target')) { potentialDropTarget.classList.add("drag-over"); } }
+document.addEventListener('dragleave', function(event) { if (event.target.classList && event.target.classList.contains("drop-target")) { event.target.classList.remove("drag-over"); } }, false);
+function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); ev.target.classList.add("dragging"); deselectItem(); }
+document.addEventListener('dragend', function(event) { if (event.target.classList && event.target.classList.contains('draggable')) { event.target.classList.remove('dragging'); } document.querySelectorAll('.drop-target.drag-over').forEach(dt => dt.classList.remove('drag-over')); });
+function drop(ev) { ev.preventDefault(); const draggedId = ev.dataTransfer.getData("text"); const draggedEl = document.getElementById(draggedId); let dropTargetEl = ev.target; if (!draggedEl) return; draggedEl.classList.remove("dragging"); document.querySelectorAll('.drop-target.drag-over').forEach(dt => dt.classList.remove('drag-over')); while (dropTargetEl && !dropTargetEl.classList.contains("drop-target") && !dropTargetEl.classList.contains("right-column-content")) { dropTargetEl = dropTargetEl.parentElement; } if (!dropTargetEl) return; if (dropTargetEl.classList.contains("drop-target")) { const currentAnswer = dropTargetEl.querySelector(".draggable"); if (currentAnswer && currentAnswer !== draggedEl) { rightColumnContent.appendChild(currentAnswer); currentAnswer.classList.remove('selected'); } dropTargetEl.innerHTML = ""; dropTargetEl.appendChild(draggedEl); dropTargetEl.classList.remove("correct", "incorrect"); updateDropTargetVisualState(dropTargetEl); } else if (dropTargetEl.classList.contains("right-column-content")) { const originalParent = draggedEl.parentElement; rightColumnContent.appendChild(draggedEl); if (originalParent && originalParent.classList.contains('drop-target')) { updateDropTargetVisualState(originalParent); originalParent.classList.remove('correct', 'incorrect'); } } deselectItem(); }
+function updateDropTargetVisualState(dropTarget) { if (!dropTarget || !dropTarget.classList.contains('drop-target')) return; if (dropTarget.querySelector(".draggable")) { dropTarget.classList.remove("empty-drop-target"); } else { dropTarget.classList.add("empty-drop-target"); } }
+function submitQuiz() { let total = 0; let correct = 0; deselectItem(); document.querySelectorAll('.question-box').forEach((box) => { total++; const correctAnswer = box.getAttribute("data-correct").trim(); const dropTarget = box.querySelector(".drop-target"); const droppedDraggable = dropTarget.querySelector(".draggable"); dropTarget.classList.remove("correct", "incorrect"); if (droppedDraggable) { const selectedText = droppedDraggable.textContent.trim(); if (selectedText === correctAnswer) { dropTarget.classList.add("correct"); correct++; } else { dropTarget.classList.add("incorrect"); } } else { dropTarget.classList.add("incorrect"); } }); const resultDiv = document.getElementById("result"); resultDiv.innerHTML = `Du hast <span class="correct-count">${correct}</span> von <span class="total-count">${total}</span> Fragen richtig beantwortet.<br><br><strong>Lösungen:</strong><br>1: F | 2: E | 3: G | 4: B | 5: H`; }
+function resetQuiz() { deselectItem(); document.querySelectorAll('.drop-target').forEach(dt => { const draggable = dt.querySelector('.draggable'); if (draggable) { rightColumnContent.appendChild(draggable); draggable.classList.remove('selected'); } dt.innerHTML = ''; dt.classList.remove('correct', 'incorrect'); updateDropTargetVisualState(dt); }); rightColumnContent.innerHTML = ''; originalAnswerOrder.forEach(draggable => { rightColumnContent.appendChild(draggable); draggable.classList.remove('dragging'); draggable.classList.remove('selected'); }); document.getElementById("result").innerHTML = ""; document.querySelectorAll('.drop-target').forEach(updateDropTargetVisualState); }
+document.querySelectorAll('.drop-target').forEach(updateDropTargetVisualState);
+initializeClickInteractions();
+</script>
+<script>
+let pingTimeout; let logoutTimer; let warningTimer; let countdownTimer; let lastPing = 0;
+const INACTIVITY_LIMIT = 15 * 60 * 1000; const WARNING_BEFORE_LOGOUT = 30 * 1000;
+const warningBox = document.getElementById("warningBox"); const countdownEl = document.getElementById("countdown");
+function sendPing() { const now = Date.now(); if (now - lastPing < 10000) return; lastPing = now; fetch("/ping").catch(() => {}); }
+function resetTimers() { clearTimeout(pingTimeout); clearTimeout(logoutTimer); clearTimeout(warningTimer); clearInterval(countdownTimer); warningBox.style.display = "none"; sendPing(); pingTimeout = setTimeout(sendPing, 60 * 1000); warningTimer = setTimeout(() => { let remaining = 30; warningBox.style.display = "block"; countdownEl.textContent = remaining; countdownTimer = setInterval(() => { remaining--; countdownEl.textContent = remaining; if (remaining <= 0) { clearInterval(countdownTimer); } }, 1000); }, INACTIVITY_LIMIT - WARNING_BEFORE_LOGOUT); logoutTimer = setTimeout(() => { fetch("/logout", { method: "POST" }).then(() => window.location.href = "../index.html"); }, INACTIVITY_LIMIT); }
+["mousemove", "keydown", "scroll", "click", "touchstart"].forEach(evt => { document.addEventListener(evt, resetTimers); });
+window.addEventListener("pageshow", sendPing); window.addEventListener("beforeunload", sendPing); resetTimers();
+</script>
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>

@@ -1,0 +1,527 @@
+<!DOCTYPE html><html>
+<!-- Mirrored from deuropa.app/quiz/Lernenist by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charset="utf-8"><meta name="download_date" content="2026-01-29T05:38:47.394Z"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernen ist kein Privileg der Jugend</title>
+    <!-- Font Awesome for Icons -->
+    <style>/*! ... نفس كود CSS الأصلي بالكامل ... */</style>
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #a78bfa;
+            --danger-color: #ef4444;
+            --light-bg: #ecf0f1;
+            --dark-text: #2c3e50;
+            --light-text: #ffffff;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --box-shadow-hover: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-text);
+            animation: fadeInPage 0.8s ease-out;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-size: 26px;
+            font-weight: 600;
+            box-shadow: var(--box-shadow);
+            letter-spacing: 0.5px;
+        }
+
+        .game-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .columns-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        @media(min-width: 768px) {
+            .game-layout { gap: 25px; }
+            .columns-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+        }
+
+        .quiz-text, .word-bank-container {
+            background-color: var(--light-text);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            max-height: 70vh; 
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--light-bg);
+        }
+        .quiz-text::-webkit-scrollbar,
+        .word-bank-container::-webkit-scrollbar { width: 8px; }
+        .quiz-text::-webkit-scrollbar-track,
+        .word-bank-container::-webkit-scrollbar-track {
+          background: var(--light-bg);
+          border-radius: var(--border-radius);
+        }
+        .quiz-text::-webkit-scrollbar-thumb,
+        .word-bank-container::-webkit-scrollbar-thumb {
+          background-color: var(--primary-color);
+          border-radius: var(--border-radius);
+          border: 2px solid var(--light-bg);
+        }
+
+        .quiz-text { flex: 3; text-align: left; line-height: 1.8; }
+        .quiz-text p { margin-bottom: 1.5em; }
+
+        .word-bank-container { flex: 1; min-width: 250px; }
+        .word-bank { display: flex; flex-direction: column; gap: 10px; }
+
+        .blank {
+            background-color: transparent;
+            color: var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 5px;
+            border-bottom: 2px dashed #ccc;
+            font-weight: bold;
+            cursor: pointer;
+            min-width: 70px;
+            text-align: center;
+            display: inline-block;
+            margin: 0 3px;
+            transition: background-color 0.3s, border-color 0.3s;
+            vertical-align: baseline;
+        }
+        .blank:hover, .blank.drag-over {
+            border-bottom-color: var(--primary-color);
+            background-color: #f5f3ff;
+        }
+        .blank[data-user-answer] {
+            border-bottom: 2px solid transparent;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .draggable {
+            background-color: #e0e0e0;
+            color: var(--dark-text);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            user-select: none;
+            font-size: 0.95em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .draggable:hover {
+            background-color: #d0d0d0;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        .draggable.selected-word-style {
+            outline: 2px solid var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-color_alpha, rgba(52, 152, 219, 0.3));
+            background-color: #ddd6fe;
+        }
+        .draggable.dragging-style {
+            opacity: 0.6;
+            transform: scale(0.95);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .button-container {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quiz-button {
+            padding: 12px 25px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--box-shadow);
+            text-decoration: none;
+        }
+        .quiz-button:hover {
+            background-color: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        .quiz-button:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .quiz-button.secondary {
+            background-color: #8b5cf6;
+        }
+        .quiz-button.secondary:hover {
+            background-color: #7c3aed;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 1.1em;
+            font-weight: 500;
+            background-color: var(--light-text);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        #result .correct-count { color: var(--secondary-color); }
+        #result .total-count { color: var(--primary-color); }
+
+        #warningBox {
+  display: none;
+  position: fixed;
+  top: 20px;                  
+  left: 50%;                  
+  transform: translateX(-50%);
+  background: #f81d1d;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 9999;
+}
+    </style>
+</head>
+<body>
+
+    <div class="game-layout">
+        <div class="header">Lernen ist kein Privileg der Jugend</div>
+
+        <div class="columns-container">
+            <!-- Left: Paragraph with blanks -->
+            <div class="quiz-text">
+            <p>Senioren sind heute höchst <span class="blank" data-answer="REGE">31</span>, aktiv und nutzen vielfach die Chance, sich in der so genannten dritten Lebensphase Wünsche oder Träume zu erfüllen. Dazu gehören oft Weiterbildung oder in der Jugend verpasste Bildung.<br><br>
+
+            Die Folge: Das Seniorenstudium, wie es <span class="blank" data-answer="AN">32</span> verschiedenen deutschen Universitäten angeboten wird, erfreut sich zunehmender Beliebtheit. <span class="blank" data-answer="ALLEIN">33</span> in Trier waren im vergangenen Sommersemester über 130 Personen der Altersgruppe 50+ als Gasthörer eingeschrieben und nahmen am regulären Lehrbetrieb teil.<br><br>
+
+            Besonders gefragt waren allgemeinbildende Veranstaltungen aus den Fächern Geschichte, Kunstgeschichte und Politik. <span class="blank" data-answer="DARAUF">34</span> folgten die neueren Sprach- und Literaturwissenschaften sowie Themen aus Philosophie, Psychologie und Pädagogik. Angebote aus den Sozial-, Wirtschafts-, Geo- und Rechtswissenschaften wurden dagegen weniger häufig gewählt. Hier finde ich insbesondere solche Seniorenstudierende wieder, die gezielt an der Vertiefung ihres fachspezifischen Wissens arbeiten.<br><br>
+
+            Der größte Teil der studierenden Senioren besteht übrigens aus Frauen. Die Gründe dafür <span class="blank" data-answer="DÜRFTEN">35</span> sein, dass Frauen in ihren jüngeren Lebensjahren häufig <span class="blank" data-answer="AUF">36</span> eine berufliche Karriere verzichteten. <span class="blank" data-answer="STATTDESSEN">37</span> setzten sie sich für die Familie und insbesondere für ihre Kinder ein. Nun sind die Kinder erwachsen und aus dem Haus, die Frauen verspüren den Wunsch, ihre geistigen Fähigkeiten, deren Einsatz in den „Familienjahren" häufig zu <span class="blank" data-answer="KURZ">38</span> gekommen war, wieder zu trainieren und zu erweitern.<br><br>
+
+            Männern hingegen konnten häufiger während ihres Arbeitslebens ihre Karriere verwirklichen, sich weiterbilden, ihr Wissen in gesellschaftlich angesehener Weise an den Mann (weniger an die Frau) bringen. <span class="blank" data-answer="AUFGRUND">39</span> dessen sehen sie keine Veranlassung, ihren Lebensabend an einer Weiterbildungsinstitution oder gar an einer Universität zu verbringen.<br><br>
+
+            Lernen ist kein Privileg der Jugend! Vielmehr besteht gerade in Bezug auf das Bildungsangebot für ältere Menschen ein riesiger Bedarf. Er wird gespeist <span class="blank" data-answer="DURCH">40</span> die Vitalität und die hohe Bildungsmotivation der heutigen „Alten". Mit der wachsenden Fitness der Generation 50+ wächst auch das Interesse, neues Wissen zu erwerben, neue Kompetenzen zu entwickeln und bisher eventuell vernachlässigte Ressourcen zu aktivieren. Gleichzeitig tragen Bildungsaktivitäten wesentlich dazu bei, dass immer mehr Menschen ihre kognitive Leistungsfähigkeit und psychische Gesundheit bis ins hohe Alter erhalten können.</p>
+            </div>
+
+            <!-- Right: Draggable answers -->
+            <div class="word-bank-container">
+                <div class="word-bank">
+                    <span class="draggable" draggable="true" data-word="ALLEIN">a ALLEIN</span>
+                    <span class="draggable" draggable="true" data-word="AN">b AN</span>
+                    <span class="draggable" draggable="true" data-word="AUF">c AUF</span>
+                    <span class="draggable" draggable="true" data-word="AUFGRUND">d AUFGRUND</span>
+                    <span class="draggable" draggable="true" data-word="DARAUF">e DARAUF</span>
+                    <span class="draggable" draggable="true" data-word="DURCH">f DURCH</span>
+                    <span class="draggable" draggable="true" data-word="DÜRFTEN">g DÜRFTEN</span>
+                    <span class="draggable" draggable="true" data-word="EINZIGE">h EINZIGE</span>
+                    <span class="draggable" draggable="true" data-word="KNAPP">i KNAPP</span>
+                    <span class="draggable" draggable="true" data-word="KURZ">j KURZ</span>
+                    <span class="draggable" draggable="true" data-word="MÖCHTEN">k MÖCHTEN</span>
+                    <span class="draggable" draggable="true" data-word="REGE">l REGE</span>
+                    <span class="draggable" draggable="true" data-word="STATTDESSEN">m STATTDESSEN</span>
+                    <span class="draggable" draggable="true" data-word="WÄHREND">n WÄHREND</span>
+                    <span class="draggable" draggable="true" data-word="WEGEN">o WEGEN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons and Result -->
+    <div class="button-container">
+        <button class="quiz-button" onclick="checkAnswers()"><i class="fas fa-paper-plane"></i> Antworten prüfen</button>
+        <a href="../indexb2.html" class="quiz-button secondary">
+            <i class="fas fa-home"></i> Zurück zur Startseite
+        </a>
+    </div>
+    <div id="result"></div>
+
+    <!-- JavaScript - نفس الكود الأصلي تماماً -->
+    <script>
+        let blanks = document.querySelectorAll(".blank");
+    let draggables = document.querySelectorAll(".draggable");
+    let selectedDraggable = null;
+
+    function makeDraggableClickable(draggableEl) {
+        draggableEl.addEventListener("dragstart", event => {
+            event.dataTransfer.setData("text", event.target.dataset.word);
+            draggableEl.classList.add("dragging-style");
+        });
+        draggableEl.addEventListener("dragend", () => {
+            draggableEl.classList.remove("dragging-style");
+        });
+
+        draggableEl.addEventListener("click", () => {
+            if (selectedDraggable) {
+                selectedDraggable.classList.remove("selected-word-style");
+            }
+
+            if (selectedDraggable === draggableEl) {
+                selectedDraggable = null;
+            } else {
+                selectedDraggable = draggableEl;
+                selectedDraggable.classList.add("selected-word-style");
+            }
+        });
+    }
+
+    draggables.forEach(makeDraggableClickable);
+
+    blanks.forEach((blank, index) => {
+        const originalNumber = blank.textContent;
+
+        blank.addEventListener("dragstart", event => {
+            if (blank.dataset.userAnswer) {
+                event.dataTransfer.setData("text", blank.dataset.userAnswer);
+            } else {
+                event.preventDefault(); 
+            }
+        });
+
+        blank.addEventListener("dblclick", () => {
+            if (blank.dataset.userAnswer) {
+                removeWordFromBlank(blank, originalNumber);
+            }
+        });
+
+        blank.addEventListener("dragover", event => {
+            event.preventDefault();
+            blank.classList.add("drag-over");
+        });
+
+        blank.addEventListener("dragleave", () => {
+            blank.classList.remove("drag-over");
+        });
+
+        blank.addEventListener("drop", event => {
+            event.preventDefault();
+            blank.classList.remove("drag-over");
+            const droppedWord = event.dataTransfer.getData("text");
+            const draggedEl = document.querySelector(`.draggable[data-word="${droppedWord}"]`);
+
+            if (blank.dataset.userAnswer) {
+                restoreToWordBank(blank.dataset.userAnswer);
+            }
+
+            if (draggedEl) {
+                draggedEl.style.display = 'none';
+            }
+            
+            fillBlank(blank, droppedWord);
+
+            if(selectedDraggable) {
+                selectedDraggable.classList.remove("selected-word-style");
+                selectedDraggable = null;
+            }
+        });
+
+        blank.addEventListener("click", () => {
+            if (!selectedDraggable) return;
+
+            const wordToFill = selectedDraggable.dataset.word;
+
+            if (blank.dataset.userAnswer) {
+                restoreToWordBank(blank.dataset.userAnswer);
+            }
+
+            fillBlank(blank, wordToFill);
+
+            selectedDraggable.style.display = 'none';
+            selectedDraggable.classList.remove("selected-word-style");
+            selectedDraggable = null;
+        });
+    });
+
+    function fillBlank(blank, word) {
+        blank.textContent = word;
+        blank.dataset.userAnswer = word;
+        blank.draggable = true;
+        blank.style.background = "";
+        blank.style.borderColor = "";
+    }
+
+    function removeWordFromBlank(blank, originalLabel) {
+        const wordToRemove = blank.dataset.userAnswer;
+        restoreToWordBank(wordToRemove);
+        blank.textContent = originalLabel; 
+        delete blank.dataset.userAnswer;
+        blank.draggable = false;
+        blank.style.backgroundColor = "";
+        blank.style.color = "";
+        blank.style.borderBottom = "";
+    }
+
+    function restoreToWordBank(wordText) {
+        const wordElInBank = document.querySelector(`.word-bank .draggable[data-word="${wordText}"]`);
+        if (wordElInBank) {
+            wordElInBank.style.display = 'flex';
+        }
+    }
+    
+    const wordBankContainer = document.querySelector(".word-bank-container");
+    wordBankContainer.addEventListener("dragover", event => {
+        event.preventDefault();
+        wordBankContainer.classList.add("drag-over");
+    });
+
+    wordBankContainer.addEventListener("dragleave", () => {
+        wordBankContainer.classList.remove("drag-over");
+    });
+
+    wordBankContainer.addEventListener("drop", event => {
+        event.preventDefault();
+        wordBankContainer.classList.remove("drag-over");
+        const droppedWord = event.dataTransfer.getData("text");
+
+        blanks.forEach(b => {
+            if (b.dataset.userAnswer === droppedWord) {
+                removeWordFromBlank(b, b.getAttribute("data-original-index") || "");
+            }
+        });
+
+        restoreToWordBank(droppedWord);
+    });
+
+    blanks.forEach((blank, idx) => {
+        blank.setAttribute("data-original-index", blank.textContent);
+    });
+
+
+    function checkAnswers() {
+        let score = 0;
+        blanks.forEach(blank => {
+            blank.style.background = ""; 
+            if (blank.dataset.userAnswer) {
+                blank.style.backgroundColor = 'var(--primary-color)';
+                blank.style.color = 'var(--light-text)';
+            }
+
+            if (blank.dataset.userAnswer && blank.dataset.userAnswer === blank.dataset.answer) {
+                blank.style.backgroundColor = "var(--secondary-color)";
+                blank.style.color = "var(--light-text)";
+                score++;
+            } else if (blank.dataset.userAnswer && blank.dataset.userAnswer !== "") {
+                blank.style.backgroundColor = "var(--danger-color)";
+                blank.style.color = "var(--light-text)";
+            } else {
+                blank.style.borderBottom = "2px dashed var(--danger-color)";
+            }
+        });
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = 
+            `Ergebnis: <span class="correct-count">${score}</span> / <span class="total-count">${blanks.length}</span><br><br>
+            <strong>Lösungen:</strong><br>
+            31: REGE | 32: AN | 33: ALLEIN | 34: DARAUF | 35: DÜRFTEN<br>
+            36: AUF | 37: STATTDESSEN | 38: KURZ | 39: AUFGRUND | 40: DURCH`;
+    }
+    </script>
+    <script>
+let pingTimeout;
+let logoutTimer;
+let warningTimer;
+let countdownTimer;
+let lastPing = 0;
+
+const INACTIVITY_LIMIT = 15 * 60 * 1000;
+const WARNING_BEFORE_LOGOUT = 30 * 1000;
+const warningBox = document.getElementById("warningBox");
+const countdownEl = document.getElementById("countdown");
+
+function sendPing() {
+    const now = Date.now();
+    if (now - lastPing < 10000) return; 
+    lastPing = now;
+    fetch("/ping").catch(() => {});
+}
+
+function resetTimers() {
+    clearTimeout(pingTimeout);
+    clearTimeout(logoutTimer);
+    clearTimeout(warningTimer);
+    clearInterval(countdownTimer);
+
+    warningBox.style.display = "none";
+
+    sendPing();
+    pingTimeout = setTimeout(sendPing, 60 * 1000);
+
+    warningTimer = setTimeout(() => {
+        let remaining = 30;
+        warningBox.style.display = "block";
+        countdownEl.textContent = remaining;
+
+        countdownTimer = setInterval(() => {
+            remaining--;
+            countdownEl.textContent = remaining;
+            if (remaining <= 0) {
+                clearInterval(countdownTimer);
+            }
+        }, 1000);
+    }, INACTIVITY_LIMIT - WARNING_BEFORE_LOGOUT);
+
+    logoutTimer = setTimeout(() => {
+        fetch("/logout", { method: "POST" })
+          .then(() => window.location.href = "../index.html");
+    }, INACTIVITY_LIMIT);
+}
+
+["mousemove", "keydown", "scroll", "click", "touchstart"].forEach(evt => {
+    document.addEventListener(evt, resetTimers);
+});
+
+window.addEventListener("pageshow", sendPing);
+window.addEventListener("beforeunload", sendPing);
+
+resetTimers();
+</script>
+
+<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
