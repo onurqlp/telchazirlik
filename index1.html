@@ -19,7 +19,6 @@
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
@@ -233,6 +232,92 @@ body::after {
   font-weight: 500;
 }
 
+/* C1 info banner */
+.c1-banner {
+  width: 100%;
+  max-width: 720px;
+  margin: 44px auto 0;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.75);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  position: relative;
+  animation: fadeInUp 0.8s ease-out 0.34s both;
+}
+
+.c1-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(216,168,79,0.18), transparent 38%),
+    linear-gradient(90deg, rgba(35,64,120,0.045), transparent);
+  pointer-events: none;
+}
+
+.c1-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  position: relative;
+  color: var(--ayda-blue);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--ayda-blue-soft);
+  border: 1px solid var(--border);
+  margin-bottom: 18px;
+}
+
+.c1-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.c1-level {
+  flex-shrink: 0;
+  width: 92px;
+  height: 92px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--ayda-blue), #315992);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: 700;
+  box-shadow: 0 14px 28px rgba(35,64,120,0.25);
+}
+
+.c1-text h2 {
+  color: var(--text-main);
+  font-size: 21px;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.c1-features {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.c1-features li {
+  color: var(--ayda-blue);
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(35,64,120,0.07);
+  border: 1px solid rgba(35,64,120,0.10);
+  padding: 7px 12px;
+  border-radius: 999px;
+}
+
 /* Footer */
 .footer {
   width: 100%;
@@ -252,128 +337,6 @@ body::after {
 
 .copyright {
   font-size: 13px;
-}
-
-/* Login screen */
-.login-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 22px;
-  background:
-    radial-gradient(circle at 18% 18%, rgba(216,168,79,0.22), transparent 34%),
-    linear-gradient(135deg, var(--ayda-blue-dark), var(--ayda-blue));
-}
-
-.login-card {
-  width: 100%;
-  max-width: 430px;
-  background: rgba(255,255,255,0.96);
-  border: 1px solid rgba(255,255,255,0.72);
-  border-radius: 30px;
-  padding: 32px 26px;
-  box-shadow: 0 28px 70px rgba(0,0,0,0.24);
-  text-align: center;
-}
-
-.login-card .brand-badge-login {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--ayda-blue);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.login-card .brand-badge-login i {
-  color: var(--ayda-gold);
-}
-
-.login-card h2 {
-  color: var(--text-main);
-  font-size: 25px;
-  line-height: 1.25;
-  margin-bottom: 8px;
-}
-
-.login-card p {
-  color: var(--text-muted);
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 22px;
-}
-
-.password-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.password-row input {
-  flex: 1;
-  width: 100%;
-  height: 48px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 0 15px;
-  color: var(--text-main);
-  font-family: inherit;
-  font-size: 15px;
-  outline: none;
-  background: #f8fafc;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.password-row input:focus {
-  border-color: rgba(35,64,120,0.55);
-  box-shadow: 0 0 0 4px rgba(35,64,120,0.10);
-  background: #fff;
-}
-
-.password-row button {
-  height: 48px;
-  border: 0;
-  border-radius: 16px;
-  padding: 0 18px;
-  background: var(--ayda-blue);
-  color: #fff;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.password-row button:hover {
-  transform: translateY(-1px);
-  background: var(--ayda-blue-dark);
-  box-shadow: 0 10px 24px rgba(35,64,120,0.24);
-}
-
-.login-error {
-  display: none;
-  color: #b42318;
-  background: #fff1f0;
-  border: 1px solid rgba(180,35,24,0.14);
-  padding: 10px 12px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-body.locked {
-  overflow: hidden;
-}
-
-body.unlocked .login-overlay {
-  display: none;
 }
 
 @keyframes fadeInDown {
@@ -425,6 +388,24 @@ body.unlocked .login-overlay {
     font-size: 12px;
     padding: 7px 12px;
   }
+
+  .c1-banner {
+    margin-top: 30px;
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .c1-content {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .c1-level {
+    width: 74px;
+    height: 74px;
+    border-radius: 20px;
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -444,42 +425,40 @@ body.unlocked .login-overlay {
     min-height: 136px;
   }
 
-  .login-card {
-    padding: 28px 20px;
-    border-radius: 24px;
+  .c1-content {
+    flex-direction: column;
+    text-align: left;
   }
 
-  .password-row {
+  .c1-features {
     flex-direction: column;
   }
 
-  .password-row button {
+  .c1-features li {
     width: 100%;
+  }
+}
+@media (max-width: 520px) {
+  .main-content {
+    align-items: stretch;
+  }
+
+  .brand-badge {
+    align-self: center;
+  }
+
+  .buttons-container {
+    grid-template-columns: 1fr;
+  }
+
+  .level-button {
+    min-height: 136px;
   }
 }
 </style>
 </head>
 
-<body class="locked">
-
-  <div class="login-overlay" id="loginOverlay">
-    <div class="login-card">
-      <div class="brand-badge-login">
-        <i class="fas fa-graduation-cap"></i>
-        <span>AYDA Dil Akademisi</span>
-      </div>
-
-      <h2>Prüfungsbereich</h2>
-      <p>Devam etmek için size verilen giriş şifresini yazınız.</p>
-
-      <div class="password-row">
-        <input type="password" id="passwordInput" placeholder="Şifre" autocomplete="current-password">
-        <button type="button" onclick="checkPassword()">Giriş</button>
-      </div>
-
-      <div class="login-error" id="loginError">Şifre hatalı. Lütfen tekrar deneyiniz.</div>
-    </div>
-  </div>
+<body>
 
   <main class="main-content">
     <div class="brand-badge">
@@ -511,51 +490,8 @@ body.unlocked .login-overlay {
     </div>
   </footer>
 
-  <script>
-    const validPasswords = [
-      "b1",
-      "aydatelc"
-      // Yeni şifre eklemek için buraya virgül koyup alt satıra yaz:
-      // ,"yenisifre"
-    ];
-
-    const passwordInput = document.getElementById("passwordInput");
-    const loginError = document.getElementById("loginError");
-
-    function unlockPage() {
-      document.body.classList.remove("locked");
-      document.body.classList.add("unlocked");
-      sessionStorage.setItem("aydaTelcAccess", "true");
-    }
-
-    function checkPassword() {
-      const enteredPassword = passwordInput.value.trim();
-
-      if (validPasswords.includes(enteredPassword)) {
-        unlockPage();
-      } else {
-        loginError.style.display = "block";
-        passwordInput.value = "";
-        passwordInput.focus();
-      }
-    }
-
-    passwordInput.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        checkPassword();
-      }
-    });
-
-    if (sessionStorage.getItem("aydaTelcAccess") === "true") {
-      unlockPage();
-    } else {
-      passwordInput.focus();
-    }
-  </script>
-
   <!-- Cloudflare Pages Analytics -->
   <script defer src='../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script>
   <!-- Cloudflare Pages Analytics -->
-
 </body>
 </html>
