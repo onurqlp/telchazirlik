@@ -33,3 +33,24 @@ print("AYDA G5 protected",len(changed),"pages; preexisting/unsupported",len(skip
 for p in changed[:20]:print("SECURED",p)
 for p in skipped:
  if "[unsupported]" in p:print("UNSUPPORTED",p)
+
+
+# Shared official AYDA logo — original asset referenced in AYDA's earlier course platform.
+logo_url="https://www.aydadil.com/wp-content/uploads/2024/03/aydankdilwhite-1.png"
+logo_marker='data-ayda-brand="official-2026"'
+logo_html=('<div data-ayda-brand="official-2026" role="banner" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:66px;background:#102541;border-radius:13px;padding:10px 16px;margin:10px auto 18px;box-sizing:border-box;width:min(100%,1200px)">'
+ '<a href="https://www.aydadil.com/" aria-label="AYDA Dil Akademisi ana sayfa" style="display:inline-flex;align-items:center;min-width:0">'
+ '<img src="'+logo_url+'" alt="AYDA Dil Akademisi" width="160" height="48" loading="eager" decoding="async" style="display:block;max-width:min(160px,44vw);height:auto;max-height:48px;object-fit:contain;object-position:left center"></a>'
+ '<a href="https://www.aydadil.com/sinavhazirlik/" style="color:#f4e6c8;font:600 12px system-ui;text-decoration:none;white-space:nowrap">Sınav merkezi ↗</a></div>')
+changed=[]
+for p in root.rglob("*.html"):
+ if any(v in p.parts for v in (".git","node_modules",".github","g4-preview","g5-production")):continue
+ s=p.read_text(encoding="utf-8")
+ if logo_marker in s:continue
+ # Add the original logo inside the existing authenticated exam-area container.
+ match=re.search(r'<div\s+id=["\']aydaProtectedContent["\'][^>]*>',s,re.I)
+ if not match:continue
+ s=s[:match.end()]+logo_html+s[match.end():]
+ p.write_text(s,encoding="utf-8")
+ changed.append(str(p.relative_to(root)))
+print("AYDA official logo placed into",len(changed),"protected exam HTML pages")
