@@ -1,7 +1,19 @@
 <!DOCTYPE html><html>
 <!-- Mirrored from deuropa.app/quiz/148 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 May 2026 11:03:33 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
-<head><meta charset="utf-8"><meta name="download_date" content="2026-01-29T05:38:47.394Z"/>
+<head><style id="ayda-exam-access-guard">
+html:not(.ayda-exam-authorized) body>#aydaProtectedContent{display:none!important}
+#aydaLoginBox{min-height:100dvh;display:grid;place-items:center;padding:22px;background:linear-gradient(145deg,#0b1b31,#214d75);position:relative;z-index:99999;font-family:system-ui,-apple-system,sans-serif}
+#aydaLoginBox .ayda-exam-login-card{background:#fff;color:#102541;padding:28px;width:min(440px,100%);border-radius:19px;box-shadow:0 20px 54px #0003}
+#aydaLoginBox h1{font-size:23px;line-height:1.3;margin:0 0 9px;color:#102541}
+#aydaLoginBox p{font-size:14px;line-height:1.55;color:#5e7287}
+#aydaLoginBox label{display:block;font-weight:800;font-size:13px;margin:20px 0 6px;color:#102541}
+#aydaLoginBox input{display:block;width:100%;min-height:50px;padding:12px 14px;border:1px solid #a6b8c9;border-radius:10px;background:#fff;color:#102541;font:16px system-ui}
+#aydaLoginBox button{width:100%;min-height:49px;background:#102541;color:#fff;border:0;border-radius:10px;font:800 15px system-ui;margin-top:12px;cursor:pointer}
+#aydaLoginBox a{color:#214d75}
+#aydaLoginBox .ayda-exam-message{min-height:22px;margin-top:10px;font-size:13px;color:#9f3838}
+html.ayda-exam-authorized #aydaLoginBox{display:none!important}
+</style><meta charset="utf-8"><meta name="download_date" content="2026-01-29T05:38:47.394Z"/>
   
   <title>Lesen Teil 3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -312,8 +324,8 @@
 
 
   </style>
-</head>
-<body>
+<style id="ayda-unified-logo-css">.ayda-shared-logo{display:inline-flex!important;align-items:center!important;gap:9px!important;text-decoration:none!important;color:#102541!important;max-width:100%}.ayda-shared-logo img{width:134px!important;max-width:min(134px,48vw)!important;height:auto!important;object-fit:contain!important;display:block!important;background:transparent!important;border:0!important;box-shadow:none!important}.ayda-shared-logo-bar{padding:9px 14px;background:#fff;border-bottom:1px solid #e4eaf0;display:flex;align-items:center;min-height:66px}@media(max-width:600px){.ayda-shared-logo img{width:112px!important}}</style></head>
+<body><section id="aydaLoginBox" aria-label="AYDA sınav öğrenci girişi"><div class="ayda-exam-login-card"><p style="color:#b18c4f;font-weight:900;font-size:12px;letter-spacing:.11em;margin:0 0 8px">AYDA DİL AKADEMİSİ</p><h1>Sınav Hazırlık · Öğrenci Girişi</h1><p>Çalışmaya devam etmek için AYDA merkezi giriş kodunu kullanın.</p><label for="aydaPasswordInput">Sınıf giriş kodu</label><input id="aydaPasswordInput" type="password" autocomplete="off" placeholder="AYDA giriş kodunuz"><button type="button" onclick="aydaCheckPassword()">Giriş Yap</button><p id="aydaLoginMessage" class="ayda-exam-message" role="status" aria-live="polite"></p><p><a href="https://www.aydadil.com/sinavhazirlik/">← Sınav hazırlık ana sayfası</a></p></div></section><div id="aydaProtectedContent" style="display:none"><div data-ayda-brand="official-2026" role="banner" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:66px;background:#102541;border-radius:13px;padding:10px 16px;margin:10px auto 18px;box-sizing:border-box;width:min(100%,1200px)"><a href="https://www.aydadil.com/" aria-label="AYDA Dil Akademisi ana sayfa" style="display:inline-flex;align-items:center;min-width:0"><img src="https://www.aydadil.com/wp-content/uploads/2024/03/aydankdilwhite-1.png" alt="AYDA Dil Akademisi" width="160" height="48" loading="eager" decoding="async" style="display:block;max-width:min(160px,44vw);height:auto;max-height:48px;object-fit:contain;object-position:left center"></a><a href="https://www.aydadil.com/sinavhazirlik/" style="color:#f4e6c8;font:600 12px system-ui;text-decoration:none;white-space:nowrap">Sınav merkezi ↗</a></div>
 
 <div class="header">Lesen Teil 3: Schränke </div>
 
@@ -772,69 +784,14 @@
 
   document.querySelectorAll('.drop-target').forEach(updateDropTargetState);
 </script>
-<script>
-let pingTimeout;
-let logoutTimer;
-let warningTimer;
-let countdownTimer;
-let lastPing = 0;
-
-const INACTIVITY_LIMIT = 15 * 60 * 1000; // 15 minutes
-const WARNING_BEFORE_LOGOUT = 30 * 1000; // 30 seconds
-const warningBox = document.getElementById("warningBox");
-const countdownEl = document.getElementById("countdown");
-
-function sendPing() {
-    const now = Date.now();
-    if (now - lastPing < 10000) return; 
-    lastPing = now;
-    fetch("/ping").catch(() => {});
-}
-
-function resetTimers() {
-    clearTimeout(pingTimeout);
-    clearTimeout(logoutTimer);
-    clearTimeout(warningTimer);
-    clearInterval(countdownTimer);
-
-    warningBox.style.display = "none"; // 🟡 hide warning if active again
-
-    sendPing();
-    pingTimeout = setTimeout(sendPing, 60 * 1000);
-
-    // Show warning 30s before logout
-    warningTimer = setTimeout(() => {
-        let remaining = 30;
-        warningBox.style.display = "block";
-        countdownEl.textContent = remaining;
-
-        countdownTimer = setInterval(() => {
-            remaining--;
-            countdownEl.textContent = remaining;
-            if (remaining <= 0) {
-                clearInterval(countdownTimer);
-            }
-        }, 1000);
-    }, INACTIVITY_LIMIT - WARNING_BEFORE_LOGOUT);
-
-    // Auto logout
-    logoutTimer = setTimeout(() => {
-        fetch("/logout", { method: "POST" })
-          .then(() => window.location.href = "../index.html");
-    }, INACTIVITY_LIMIT);
-}
-
-// Events
-["mousemove", "keydown", "scroll", "click", "touchstart"].forEach(evt => {
-    document.addEventListener(evt, resetTimers);
-});
-
-window.addEventListener("pageshow", sendPing);
-window.addEventListener("beforeunload", sendPing);
-
-resetTimers();
-</script>
 
 
 
-<!-- Cloudflare Pages Analytics --><script defer src='../../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cb8d3f37e8a34a1584ced7e8750df016"}'></script><!-- Cloudflare Pages Analytics --></body>
+
+</div><script src="https://onurqlp.github.io/ayda-pass/access-control.js" onerror="document.getElementById('aydaLoginMessage').textContent='Giriş hizmetine ulaşılamıyor.'"></script>
+<script id="ayda-exam-authorization-sync">(function(){
+ const content=document.getElementById('aydaProtectedContent');
+ if(!content)return;
+ function sync(){const allowed=content.style.display==='block';document.documentElement.classList.toggle('ayda-exam-authorized',allowed);}
+ new MutationObserver(sync).observe(content,{attributes:true,attributeFilter:['style']});sync();
+})();</script><script id="ayda-unified-logo-js">(function(){let logo='https://www.aydadil.com/wp-content/uploads/2026/10/ayda-home-v89-baa791945bb954a30b.png';let target=document.querySelector('header .brand,header .logo,header .top-brand,header .brand-mark,.topbar .brand,.site-header .brand,.navbar .brand,.brand-badge');if(target){if(target.tagName==='A'){target.classList.add('ayda-shared-logo');target.href='https://www.aydadil.com/';target.innerHTML='<img width="134" height="49" alt="AYDA Dil Akademisi" src="'+logo+'">'}else if(target.closest('a')){let a=target.closest('a');a.classList.add('ayda-shared-logo');a.href='https://www.aydadil.com/';a.innerHTML='<img width="134" height="49" alt="AYDA Dil Akademisi" src="'+logo+'">'}else{target.innerHTML='<img width="134" height="49" alt="AYDA Dil Akademisi" src="'+logo+'">';target.classList.add('ayda-shared-logo')}}else{let top=document.querySelector('header,main,.page,body');if(!top)return;let bar=document.createElement('div');bar.className='ayda-shared-logo-bar';bar.innerHTML='<a class="ayda-shared-logo" href="https://www.aydadil.com/" aria-label="AYDA Ana Sayfa"><img width="134" height="49" alt="AYDA Dil Akademisi" src="'+logo+'"></a>';top.prepend(bar)}})();</script></body>
